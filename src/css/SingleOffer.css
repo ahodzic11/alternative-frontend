@@ -1,0 +1,287 @@
+.offerMainTitle {
+  padding-left: 100px;
+  font-family: "Fjalla One", sans-serif;
+  font-weight: 500;
+  font-size: 45px;
+  color: black;
+  width: 100%;
+  letter-spacing: 3px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.offerContainer {
+  display: flex;
+  flex-direction: row;
+}
+
+.offerImageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  height: 400px;
+}
+
+.offerImageElement {
+  object-fit: cover;
+  background-color: white;
+  height: 100%;
+  width: 100%;
+}
+
+.offerContainerFirstColumn {
+  padding-left: 100px;
+  background-color: white;
+  width: 60%;
+}
+
+.offerContainerSecondColumn {
+  padding: 40px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 110px;
+  align-items: center;
+  width: 40%;
+}
+
+.offerContainerText {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  font-family: "Josefin Sans", sans-serif;
+  justify-content: center;
+  font-size: 20px;
+  row-gap: 15px;
+}
+
+.offerImages {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.offerInformationImageElement {
+  object-fit: cover;
+  height: 200px;
+  width: 40%;
+}
+
+.offerSadrzajPonude {
+  color: rgb(71, 71, 71);
+  white-space: pre-wrap;
+}
+
+.bookingContainer {
+  padding: 15px;
+  border-radius: 7%;
+  width: 70%;
+  height: fit-content;
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.bookingTitle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 5px;
+  color: black;
+  font-weight: 500;
+  letter-spacing: 1px;
+  font-size: 20px;
+  font-family: "Secular One", sans-serif;
+  padding-left: 15px;
+}
+
+.applicationTitle {
+  padding-top: 3px;
+}
+
+.bookingImage {
+  height: 25px;
+  width: 25px;
+}
+
+.applyImage {
+  height: 30px;
+  width: 30px;
+}
+
+.bookingFormular {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  justify-content: center;
+  align-items: center;
+  padding-top: 40px;
+}
+
+#timeInput {
+  height: 38px;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  text-align: start;
+  width: 100%;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  border-bottom-color: rgb(206, 212, 218);
+  border-top-color: rgb(206, 212, 218);
+  border-right-color: rgb(206, 212, 218);
+  border-left-color: rgb(206, 212, 218);
+  border-width: 0.8px;
+}
+
+.bookADate {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Josefin Sans", sans-serif;
+  color: white;
+  background-color: rgb(226, 19, 19);
+  height: 45px;
+  text-align: center;
+  width: 90%;
+  border-radius: 500px;
+  font-size: 18px;
+}
+
+.offerDescription {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+  height: 340px;
+}
+
+.offerOpis {
+  position: relative;
+  font-size: 25px;
+  height: 100%;
+  width: 100%;
+}
+
+.offerMainOpis {
+  color: white;
+  font-size: 40px;
+  position: absolute;
+  width: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: bold;
+  letter-spacing: 5px;
+}
+
+.offerImage {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  filter: brightness(20%) grayscale(100%);
+}
+
+.offerRadioButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.offersImageContainer {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.form-check-input:checked {
+  background-color: rgb(228, 42, 42);
+  border-color: rgb(158, 114, 114);
+}
+
+.form-control {
+  border: 2px solid #ced4da;
+}
+
+.timeInputContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+#terminVrijeme {
+  width: 100px;
+}
+
+.offerImagesWrapper {
+  display: flex;
+  flex-direction: row;
+  height: 500px;
+  width: 100%;
+}
+
+.offerImagesFirstColumn {
+  height: 100%;
+  width: 40%;
+}
+
+.offerImagesSecondColumn {
+  height: 100%;
+  width: 60%;
+}
+
+.offerImagesFirstRow {
+  height: 33%;
+  width: 100%;
+}
+
+.offerImagesSecondRow {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 67%;
+}
+
+.offerImagesSecondRowFirstColumn {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 50%;
+}
+
+.offerImagesSecondRowSecondColumn {
+  height: 100%;
+  width: 50%;
+}
+
+.offerImagesSecondRowFirstColumnFirstRow {
+  width: 100%;
+  height: 50%;
+}
+
+.offerImagesSecondRowFirstColumnSecondRow {
+  width: 100%;
+  height: 50%;
+}
+
+.offerImagesElementItem {
+  padding: 10px;
+}
+
+.imageElementItem {
+  object-fit: cover;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: 0.2s all ease-in-out;
+}
+
+.imageElementItem:hover {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+}

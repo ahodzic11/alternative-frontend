@@ -1,0 +1,59 @@
+.workshopAreaContainer {
+}
+
+.workshopAreaItem {
+  cursor: pointer;
+  width: 450px;
+  transition: 0.2s ease;
+}
+
+.workshopAreaItem:hover {
+  transition: 0.2s ease;
+  box-shadow: 0px 12px 22px 1px #333;
+}
+
+.workshopAreaTitle {
+  font-family: "Teko", sans-serif;
+  padding-top: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  color: white;
+  background-color: #ff5956;
+  height: 90px;
+  font-weight: 550;
+  text-align: center;
+  letter-spacing: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  overflow: hidden;
+}
+
+.workshopAreaImage {
+  object-fit: cover;
+  height: 300px;
+  width: 100%;
+}
+
+.foundWorkshopsContainer .oneWorkshopDetail {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding-left: 120px;
+  padding-right: 120px;
+}
+
+.allWorkshops {
+  padding-top: 70px;
+  padding-bottom: 70px;
+  display: flex;
+  justify-content: center;
+  background-color: #f1f3f4;
+}
+
+.viewAllWorkshops {
+  height: 70px;
+  width: 20%;
+}

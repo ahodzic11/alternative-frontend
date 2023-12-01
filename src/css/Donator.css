@@ -1,0 +1,48 @@
+.donatorAreaContainer {
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 50px;
+  width: 70%;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+.donatorAreaImageContainer {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.donatorAreaImage {
+  height: 170px;
+  width: 250px;
+}
+
+.donatorAreaTitle {
+  font-size: 20px;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold;
+}
+
+.donatorAreaItem {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+}
+
+.donatorSecondWrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+}
+
+.donatorPeriod {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.donatorLink {
+  font-size: 15px;
+  font-family: "Josefin Sans", sans-serif;
+}

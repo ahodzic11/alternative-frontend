@@ -1,0 +1,67 @@
+.pagination-outer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  background-color: #f1f4f5;
+}
+.pagination {
+  margin: 0;
+  padding: 0;
+  font-family: "Ubuntu", sans-serif;
+}
+.pagination li a.page-link {
+  color: #333;
+  background-color: #e9e9e9;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 40px;
+  height: 40px;
+  width: 35px;
+  padding: 0;
+  margin: 0 7px 6px;
+  border: none;
+  border-radius: 0;
+  position: relative;
+  z-index: 1;
+  transition: all 0.5s ease 0s;
+  cursor: pointer;
+}
+.pagination li a.page-link:hover,
+.pagination li a.page-link:focus,
+.pagination li.active a.page-link:hover,
+.pagination li.active a.page-link {
+  color: #fff;
+  background: #e9e9e9;
+}
+.pagination li a.page-link:before,
+.pagination li a.page-link:after {
+  content: "";
+  background-color: #333;
+  height: 3px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1;
+  transition: all 0.3s ease 0s;
+}
+.pagination li a.page-link:hover:before,
+.pagination li a.page-link:focus:before,
+.pagination li.active a.page-link:hover:before,
+.pagination li.active a.page-link:before {
+  height: 100%;
+}
+@media only screen and (max-width: 480px) {
+  .pagination {
+    font-size: 0;
+    display: inline-block;
+  }
+  .pagination li {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 0 10px;
+  }
+}

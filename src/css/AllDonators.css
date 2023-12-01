@@ -1,0 +1,144 @@
+.workshopsContainer {
+}
+
+.containerWorkshopItem {
+  height: 300px;
+  width: 300px;
+  background-color: yellow;
+  color: black;
+}
+
+.randomDiv {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background-color: aqua;
+}
+
+.workshopsMainWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1f3f4;
+}
+
+.workshopsMainTitle {
+  padding: 20px;
+  font-size: 48px;
+  font-weight: 600;
+  font-family: "Josefin Sans", sans-serif;
+  letter-spacing: 4px;
+}
+
+.workshopsIntro {
+  padding-bottom: 20px;
+  font-size: 20px;
+  text-align: center;
+  font-family: "Oswald", sans-serif;
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+.workshopsAreasContainer {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  letter-spacing: 3px;
+  padding: 50px;
+}
+
+.allDonatorsContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 60px;
+  padding-left: 30px;
+  padding-right: 30px;
+  gap: 30px;
+}
+
+.filtersContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  padding-left: 60px;
+  width: 100%;
+  justify-content: left;
+  padding-bottom: 30px;
+}
+
+.filtersHeadline {
+  font-size: 20px;
+  font-family: "Oswald", sans-serif;
+}
+
+.filtersSection {
+  display: flex;
+  flex-direction: row;
+  font-size: 15px;
+  column-gap: 20px;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 1px;
+}
+
+.filteringInputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  column-gap: 50px;
+  height: 30px;
+}
+
+.filterAndSortingSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  column-gap: 50px;
+  padding: 10px;
+  width: 100%;
+}
+
+.resetFilters {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  background-color: white;
+}
+
+.donator-is-visible {
+  position: relative;
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  width: 100%;
+  transition: opacity 500ms ease-out, transform 500ms ease-out;
+}
+
+.donatorSectionRight {
+  opacity: 0;
+  transform: translate(50%, 0);
+  visibility: hidden;
+  transition: opacity 800ms ease-out, transform 800ms ease-out;
+  will-change: opacity, visibility;
+  z-index: 99;
+}
+
+.donatorSectionLeft {
+  opacity: 0;
+  transform: translate(-50%, 0);
+  visibility: hidden;
+  transition: opacity 800ms ease-out, transform 800ms ease-out;
+  will-change: opacity, visibility;
+}

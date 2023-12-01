@@ -1,0 +1,72 @@
+.newsDetailedMainWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1f3f4;
+  height: 440px;
+  margin-left: 60px;
+  margin-right: 60px;
+}
+
+.randomAssDiv {
+  background-color: #f1f3f4;
+  padding: 30px;
+}
+
+.firstWrapperNews {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+  padding: 20px;
+  background-color: #ffa600;
+  color: white;
+  height: inherit;
+  width: 28%;
+  justify-content: space-between;
+}
+
+.secondWrapperNews {
+  height: inherit;
+  width: 72%;
+}
+
+.newsImageElement {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.newsDetailedTitle {
+  font-size: 35px;
+  font-family: "Righteous", cursive;
+}
+
+.newsDetailedGoal {
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 1px;
+}
+
+.newsDetailedGoal p {
+  cursor: pointer;
+}
+
+.moreAboutNewsLink:hover {
+  transition: 0.2s ease;
+  text-decoration: underline;
+}
+
+.newsImages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.newsInformationImageElement {
+  object-fit: cover;
+  height: 200px;
+  width: 370px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}

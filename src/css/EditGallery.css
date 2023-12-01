@@ -1,0 +1,140 @@
+.addWorkshopContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 50px;
+  align-items: center;
+  align-content: space-between;
+  width: 100%;
+  padding-top: 30px;
+}
+
+.addWorkshopForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+}
+
+.addStuffButton {
+  display: flex;
+  justify-content: right;
+  font-family: "Josefin Sans", sans-serif;
+  padding-bottom: 30px;
+}
+
+.itemTitleElement {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 570;
+  font-size: 20px;
+}
+
+.currentLocationHeadline {
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 3px;
+  color: black;
+  display: flex;
+  font-size: 30px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.currentLocationHeadlineChooseImage {
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 3px;
+  color: black;
+  display: flex;
+  font-size: 30px;
+  padding-top: 30px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.clickContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: center;
+  gap: 30px;
+  width: 100%;
+  margin-bottom: 30px;
+}
+
+.chooseImageElement {
+  height: 200px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+.chooseImageElement.selected {
+  border-color: red;
+}
+
+.selectedDiv {
+  display: flex;
+  justify-content: center;
+  font-family: "Oswald", sans-serif;
+  background-color: rgb(121, 171, 236);
+  color: white;
+  letter-spacing: 3px;
+}
+
+.selectedImage {
+  box-shadow: 0px 12px 22px 1px #333;
+}
+
+#saveSelectedImage {
+  padding-bottom: 80px;
+  margin-right: 85px;
+}
+
+.imageUploadForm {
+  display: flex;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.uploadImagesButton {
+  display: flex;
+  justify-content: right;
+  width: 100%;
+}
+
+.buttonDivUpload {
+  display: flex;
+  justify-content: right;
+}
+
+.uploadImagesInput {
+  width: 90%;
+}
+
+.currentLocationHeadline2 {
+  margin-top: 50px;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 3px;
+  color: black;
+  display: flex;
+  font-size: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 40px;
+}
+
+.customFormContainer {
+  width: 100%;
+}
+
+.addPeriodContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.donatorCustomFormContainer {
+  width: 60%;
+}
+
+.workshopSecondImages {
+  padding-bottom: 60px;
+}

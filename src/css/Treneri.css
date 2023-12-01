@@ -1,0 +1,204 @@
+.outterContainer {
+  background-color: #f1f3f4;
+}
+
+.trainersContainer {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.solidBlockContainer {
+  position: absolute;
+  width: 100%;
+  height: 200px;
+  background-color: rgb(255, 25, 25);
+}
+
+.personelContainer {
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  z-index: 99;
+  row-gap: 30px;
+}
+
+.trainerItem {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  column-gap: 35px;
+  padding: 20px;
+}
+
+.trainerImageItem {
+  border-radius: 50%;
+  border: 3px solid rgb(163, 2, 2);
+  object-fit: cover;
+  height: 250px;
+  width: 250px;
+}
+
+.trainerInformation {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  animation: informationFadeIn 1s;
+}
+
+@keyframes informationFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.trainerImage {
+  animation: imagesFadeIn 1s;
+}
+
+@keyframes imagesFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.trainerName {
+  font-family: "Oswald", sans-serif;
+  font-size: 30px;
+}
+
+.trainerDescription {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.trainerPosition {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 20px;
+  color: rgb(184, 22, 22);
+}
+
+.trainerIcon {
+  cursor: pointer;
+  width: 25px;
+  height: 25px;
+  filter: brightness(100%);
+}
+
+.trainerIcons {
+  display: flex;
+  flex-direction: row;
+  column-gap: 15px;
+}
+
+.outterContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1f4f5;
+}
+
+.trainerEmailInformation {
+  animation: createDifferent 0.7s;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 300;
+}
+
+@keyframes createDifferent {
+  0% {
+    transform: translateX(-900px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+#snackbar {
+  visibility: hidden;
+  color: #fff;
+  background-color: #333;
+  min-width: 250px;
+  margin-left: -125px;
+  border-radius: 2px;
+  padding: 16px;
+  text-align: center;
+  left: 50%;
+  bottom: 30px;
+  z-index: 1;
+  position: fixed;
+}
+
+/* This will be activated when the snackbar's class is 'show' which will be added through JS */
+#snackbar.show {
+  visibility: visible;
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+/* Animations for fading in and out */
+@-webkit-keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+.cvIconLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

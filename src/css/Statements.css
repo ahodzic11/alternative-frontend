@@ -1,0 +1,122 @@
+.heading {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.testimonials {
+  background-size: cover;
+  background-attachment: fixed;
+  padding-top: 30px;
+  position: relative;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.testimonials:before {
+  content: "";
+  background: #f1f3f4;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+.testimonials .heading h2 {
+  font-size: 40px;
+  font-weight: 700;
+  color: black;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 14px;
+}
+
+.testimonials .heading h2 span {
+  color: #ff0000;
+}
+
+.testimonials p {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: gray;
+  margin: 20px 0;
+  padding: 0;
+}
+
+/* Image */
+.testimonials .carousel-inner .carousel-item .team {
+  object-fit: cover;
+  width: 120px;
+  height: 120px;
+  border: 2px solid #ed3237;
+  border-radius: 100%;
+  margin: 50px 0 15px;
+}
+
+.testimonials .carousel-inner .carousel-item h3 {
+  font-size: 20px;
+  color: black;
+  font-weight: 600;
+}
+
+.testimonials .carousel-inner .carousel-item h4 {
+  font-size: 14px;
+  font-weight: 400;
+  color: black;
+  margin-bottom: 20px;
+}
+
+.testimonials .carousel-indicators {
+  bottom: -30px;
+}
+
+.testimonials .carousel-indicators li {
+  background-color: #b8b7b7;
+  height: 1px;
+  width: 40px;
+  padding-bottom: 4px;
+}
+
+.testimonials .carousel-indicators .active {
+  background-color: #ff0000;
+}
+
+.testimonials .control span {
+  cursor: pointer;
+}
+
+.testimonials .icon {
+  height: 40px;
+  width: 40px;
+  background-size: 100%, 100%;
+  border-radius: 50%;
+  font-size: 30px;
+  background-image: none;
+  color: black;
+}
+
+.carousel .carousel-item {
+  transition: transform 0.2s ease-in-out;
+}
+
+.oneContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.othersDescription {
+  height: 330px;
+  width: 60%;
+}
+
+.statementsContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1f4f5;
+}

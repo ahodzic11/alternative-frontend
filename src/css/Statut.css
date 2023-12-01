@@ -1,0 +1,96 @@
+.statutMainContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1f3f4;
+}
+
+.statutHeadline {
+  font-size: 48px;
+  font-weight: 600;
+  font-family: "Josefin Sans", sans-serif;
+  letter-spacing: 4px;
+  padding-top: 50px;
+}
+
+.statutDescription {
+  font-size: 20px;
+  text-align: center;
+  font-family: "Oswald", sans-serif;
+}
+
+.statutDocumentFileButtonsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.textLayer,
+.annotationLayer {
+  display: none;
+}
+
+.statutDocumentFileButton {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 1px;
+}
+
+.statutDocumentPageNumber {
+  margin-top: 20px;
+  font-size: 15px;
+  text-align: center;
+  font-family: "Oswald", sans-serif;
+}
+
+.pages {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.pageElement1 {
+  max-height: 0px;
+  animation: statutFadeIn 2s;
+  transition: max-height 1s ease-in-out;
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
+}
+
+.pageElement2 {
+  max-height: 0px;
+  animation-delay: 10s;
+  animation: statutFadeIn 2s;
+  transition: max-height 1s ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes statutFadeIn {
+  20% {
+    max-height: 0px;
+  }
+  100% {
+    max-height: 3330px;
+  }
+}
+
+.sectionRight {
+  opacity: 0;
+  transform: translate(50%, 0);
+  visibility: hidden;
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
+  will-change: opacity, visibility;
+  z-index: 99;
+}
+
+.sectionLeft {
+  opacity: 0;
+  transform: translate(-50%, 0);
+  visibility: hidden;
+  transition: opacity 300ms ease-out, transform 300ms ease-out;
+  will-change: opacity, visibility;
+}

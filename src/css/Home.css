@@ -1,0 +1,30 @@
+.navigationFadeInDiv {
+  max-height: 0;
+  overflow: hidden;
+  animation: 2s navigationMainPageAnimation ease-in-out;
+  animation-duration: 2s;
+  animation-delay: 6s;
+  animation-fill-mode: forwards;
+  transition: max-height 1.2s cubic-bezier(0, 1, 0, 1);
+}
+
+@keyframes navigationMainPageAnimation {
+  from {
+    max-height: 0;
+    overflow: hidden;
+  }
+  to {
+    max-height: 3000px;
+    transition: max-height 1s ease-in-out;
+    overflow: visible;
+  }
+}
+
+.showAnimation {
+  max-height: 3000px;
+  transition: max-height 1s ease-in-out;
+}
+
+.randomEmptyDiv {
+  background-color: white;
+}

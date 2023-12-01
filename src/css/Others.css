@@ -1,0 +1,124 @@
+.othersContainer {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  background-color: #f1f3f4;
+  width: 100%;
+}
+
+.othersWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  height: 100%;
+  width: 100%;
+  background-color: #f1f3f4;
+}
+
+.othersInnerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30%;
+  padding: 20px 40px 20px 40px;
+  background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.othersLink,
+.othersDescription {
+  font-family: "Josefin Sans", sans-serif;
+  text-align: center;
+}
+
+.othersTitle {
+  margin-bottom: 40px;
+}
+
+.othersTitle,
+.othersSmallerTitle {
+  text-align: center;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.othersSmallerTitle {
+  font-size: 18px;
+}
+
+.othersDate {
+  text-align: right;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 14px;
+  padding-top: 40px;
+}
+
+.firstPicturesDiv,
+.secondPicturesDiv {
+  background-color: #f1f3f4;
+  height: 100%;
+  width: 20%;
+}
+
+.imageFile {
+  border-radius: 2%;
+  height: 300px;
+  width: 100px;
+  object-fit: cover;
+}
+
+.imageDescription {
+  padding-top: 15px;
+  text-align: center;
+  font-weight: bold;
+  color: #dc3545;
+}
+
+.firstPicturesDiv {
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 300px;
+  align-items: center;
+}
+
+.secondPicturesDiv {
+  padding-top: 380px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 300px;
+  align-items: center;
+}
+
+.imageName {
+  font-size: 18px;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.imageTitle {
+  font-size: 13px;
+  font-family: "Josefin Sans", sans-serif;
+  color: #1e1e1e;
+}
+
+.imageStatement a {
+  letter-spacing: 2px;
+  font-family: "Teko", sans-serif;
+  text-decoration: none;
+}
+
+.othersLink a {
+  font-size: 20px;
+  font-family: "Teko", sans-serif;
+  letter-spacing: 2px;
+  text-decoration: none;
+}
+
+.mainTitle {
+  padding-top: 40px;
+}

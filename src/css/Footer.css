@@ -1,0 +1,150 @@
+.footerDiv {
+  width: 100%;
+}
+
+.mainDiv {
+  background-color: #221d20;
+  height: 400px;
+  color: #adb1b7;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.socialMediaButtons {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  column-gap: 13px;
+}
+
+.socialmedia {
+  height: 40px;
+  width: 40px;
+  background-color: #808285;
+  cursor: pointer;
+}
+
+.mainInformation {
+  padding-left: 7%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  justify-content: center;
+  font-family: "Alkatra", cursive;
+  font-weight: 500;
+  width: 33%;
+}
+
+.title {
+  color: #f1f3f4;
+  font-size: 24px;
+}
+
+.alternativeInfoContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.alternativeLogo {
+  height: 60x;
+  width: 160px;
+  cursor: pointer;
+}
+
+.references {
+  padding-right: 7%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  justify-content: center;
+  text-align: right;
+  align-items: right;
+  font-family: "Rubik", sans-serif;
+  width: 33%;
+}
+
+.reference {
+  display: flex;
+  justify-content: right;
+  transition: 0.3s ease;
+}
+
+.referenceItem {
+  margin: 0;
+  padding: 0;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.referenceItem:hover {
+  color: white;
+}
+
+.socialmedia {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.copyrightFooter {
+  height: 35px;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: 600;
+  color: #adb1b7;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #2e2e2d;
+}
+
+.map-container {
+  width: 100%;
+  height: 100%;
+}
+
+.locationDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  height: 100%;
+  width: 55%;
+  overflow: hidden;
+  border-radius: 10%;
+}
+
+.locationDiv div {
+  border-radius: 15px;
+}
+
+.content-image {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.content-image-element {
+  object-fit: cover;
+  width: 70%;
+}
+
+.image-description {
+  padding-top: 10px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold;
+  font-size: 13px;
+}

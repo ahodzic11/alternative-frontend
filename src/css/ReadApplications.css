@@ -1,0 +1,48 @@
+.applicationsMainTitle {
+  font-size: 30px;
+  font-weight: bold;
+  font-family: "Josefin Sans", sans-serif;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.applicationsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.applicationContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-family: "Oswald", sans-serif;
+}
+
+.allApplicationsContainer {
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.applicationName {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.applicationInfoItem {
+  width: 250px;
+  font-family: "Josefin Sans", sans-serif;
+  border: 1px solid gray;
+  padding-left: 10px;
+}
+
+.applicationTitle {
+  width: 250px;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding-left: 10px;
+}

@@ -1,0 +1,40 @@
+.workshopInformationContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  padding: 30px;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.workshopInnerContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.workshopInformationTitle {
+  font-size: 45px;
+  font-weight: bold;
+}
+
+.workshopInformationAbout {
+  font-size: 20px;
+}
+
+.informationalText {
+  font-size: 18px;
+}
+
+.workshopInformationImage img {
+  height: 500px;
+  width: 100%;
+  object-fit: cover;
+}
+
+span {
+  letter-spacing: 0.5x;
+  font-weight: 600;
+  font-size: 20px;
+  font-family: "Josefin Sans", sans-serif;
+}

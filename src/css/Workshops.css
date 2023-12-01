@@ -1,0 +1,60 @@
+.workshopsContainer {
+}
+
+.containerWorkshopItem {
+  height: 300px;
+  width: 300px;
+  background-color: yellow;
+  color: black;
+}
+
+.randomDiv {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background-color: aqua;
+}
+
+.workshopsMainWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1f3f4;
+  width: 100%;
+}
+
+.workshopsMainTitle {
+  padding: 20px;
+  font-size: 48px;
+  font-weight: 600;
+  font-family: "Josefin Sans", sans-serif;
+  letter-spacing: 4px;
+}
+
+.workshopsIntro {
+  padding-bottom: 20px;
+  font-size: 20px;
+  text-align: center;
+  font-family: "Oswald", sans-serif;
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+.workshopsAreasContainer {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  letter-spacing: 3px;
+  padding: 50px;
+}
+
+.allWorkshops {
+  width: 100%;
+}
+
+.viewAllWorkshops {
+  width: 80%;
+  height: 50%;
+}

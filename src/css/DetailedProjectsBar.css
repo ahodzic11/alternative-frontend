@@ -1,0 +1,88 @@
+.detailedProjectsContainer {
+  height: 800px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.projectsTitle {
+  font-family: "Josefin Sans", sans-serif;
+  letter-spacing: 3px;
+  margin-top: 20px;
+  margin-bottom: 80px;
+  font-size: 56px;
+}
+
+.projectLogo {
+  margin-top: 40px;
+  height: 200px;
+  width: 200px;
+}
+
+.projectHeadline {
+  font-family: "Josefin Sans", sans-serif;
+  margin-top: 20px;
+  color: rgb(182, 29, 34);
+  letter-spacing: 0.5x;
+  font-size: 20px;
+  font-weight: 600;
+  min-height: 70px;
+}
+
+.projectText {
+  font-family: "Alkatra", cursive;
+  color: rgb(59, 60, 56);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 25.2px;
+}
+
+.projectItem {
+  width: 300px;
+  height: 400px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.2s all ease-in-out;
+  background-color: white;
+  border-top-left-radius: 10%;
+  border-top-right-radius: 10%;
+  border-bottom-left-radius: 10%;
+  border-bottom-right-radius: 10%;
+}
+
+.projectItem:hover {
+  filter: brightness(80%);
+}
+
+.projectsContainerNew {
+  display: flex;
+  flex-direction: row;
+  column-gap: 140px;
+}
+
+.projectsButton {
+  margin-top: 90px;
+  width: 210x;
+  height: 42px;
+  letter-spacing: 2px;
+  font-weight: bold;
+}
+
+.projectsButtonText {
+  font-family: "Alkatra", cursive;
+}
+
+#detailedLink {
+  text-decoration: none;
+  color: black;
+}
+
+.trainerEmailDetails {
+  display: none;
+}

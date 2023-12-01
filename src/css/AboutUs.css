@@ -1,0 +1,135 @@
+.missionVisionImage {
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-image: url("./../assets/missionVision.jpg");
+}
+
+.administrativeBodiesImage {
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-image: url("./../assets/administrativeBodiesImage.jpg");
+}
+
+.networksImage {
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-image: url("./../assets/clanstvo.jpg");
+}
+
+.aboutUsHeadline {
+  margin-top: 60px;
+  margin-bottom: 50px;
+  font-size: 50px;
+  font-family: "Fredoka One", cursive;
+  color: black;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+.aboutUsMissionVisionContainer {
+  margin: 0px 0px 30px 0px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+  align-items: center;
+  letter-spacing: 3px;
+  width: 60%;
+  justify-content: center;
+  background-color: #f1f3f4;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.12), 0 2px 2px rgba(0, 0, 0, 0.12), 0 4px 4px rgba(0, 0, 0, 0.12), 0 8px 8px rgba(0, 0, 0, 0.12), 0 16px 16px rgba(0, 0, 0, 0.12);
+}
+
+.headline {
+  font-size: 30px;
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold;
+  color: #b61d22;
+}
+
+.aboutUsText {
+  font-size: 18px;
+  text-align: center;
+  text-indent: 30px;
+}
+
+.aboutUsText2 {
+  font-size: 18px;
+}
+
+.aboutUsContainerElement {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.developmentImage {
+  background-image: url("./../assets/razvojImage.jpg");
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.parallexImage {
+  font-family: "Teko", sans-serif;
+  font-size: 90px;
+  font-weight: 800;
+  color: #b61d22;
+  letter-spacing: 15px;
+  text-align: center;
+}
+
+.principlesImage {
+  background-image: url("./../assets/principles.jpg");
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.administrativeBodyDetails {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}

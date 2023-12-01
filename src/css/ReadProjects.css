@@ -1,0 +1,56 @@
+.basicInfo {
+  display: flex;
+  flex-direction: row;
+  background-color: #d8d8d8;
+  color: black;
+  padding: 40px;
+  margin-bottom: 10px;
+  margin-left: 50px;
+  margin-right: 50px;
+  border-radius: 1%;
+  margin-top: 70px;
+}
+
+.projectTitle {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.firstProjectInformation {
+  width: 85%;
+}
+
+.projectOptions {
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  height: 60px;
+  width: 15%;
+}
+
+.projectEditOption {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33%;
+  background: #98d8f0;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.infoItem {
+  font-family: "Alkatra", cursive;
+  font-size: 14px;
+}
+
+.projectEditOption img {
+  height: 36px;
+  width: 36px;
+}
+
+.readProjectContainer {
+  padding-top: 30px;
+  background-color: #f1f3f4;
+  padding-bottom: 40px;
+}

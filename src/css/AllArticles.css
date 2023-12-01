@@ -1,0 +1,124 @@
+.articleItem {
+  width: 100%;
+  height: fit-content;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.articleItemWithPadding {
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 100%;
+}
+
+.articleTopBar {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  color: white;
+  background-color: #ed3237;
+  padding-left: 30px;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 25px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  width: 100%;
+}
+
+.articleImageTextContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+}
+
+.articleTextContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-left: 15px;
+  height: 400px;
+  width: 65%;
+  overflow: hidden;
+  background-color: #f1f4f5;
+}
+
+.articleImage {
+  width: 35%;
+  height: 100%;
+}
+
+.articleImageElement {
+  width: 100%;
+  height: 400px;
+}
+
+.articleMainTitle {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  padding-top: 20px;
+}
+
+.articleText {
+  font-family: "Josefin Sans", sans-serif;
+  display: flex;
+  width: 90%;
+  font-size: 17px;
+  text-align: justify;
+  white-space: pre-wrap;
+}
+
+.readMoreArticle {
+  font-family: "Josefin Sans", sans-serif;
+  font-weight: bold;
+  font-size: 17px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.readMoreLink {
+  padding-left: 10px;
+  width: 100%;
+}
+
+.allArticlesContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+  padding-bottom: 40px;
+  min-height: 400px;
+  background-color: #f1f4f5;
+  width: 100%;
+}
+
+.articlesMainWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.articleItemWithPadding {
+  animation: createArticle 0.7s;
+}
+
+@keyframes createArticle {
+  from {
+    left: -3000px;
+  }
+  to {
+    left: 0px;
+  }
+}
+
+.article-is-visible {
+  position: relative;
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  width: 100%;
+}

@@ -1,0 +1,72 @@
+.projectDetailedMainWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1f3f4;
+  height: 440px;
+  margin-left: 60px;
+  margin-right: 60px;
+}
+
+.randomAssDiv {
+  background-color: #f1f3f4;
+  padding: 30px;
+}
+
+.firstWrapperProject {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+  padding: 20px;
+  background-color: #3dbff6;
+  color: white;
+  height: inherit;
+  width: 28%;
+  justify-content: space-between;
+}
+
+.secondWrapperProject {
+  height: inherit;
+  width: 72%;
+}
+
+.projectImageElement {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.projectDetailedTitle {
+  font-size: 35px;
+  font-family: "Righteous", cursive;
+}
+
+.projectDetailedGoal {
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 1px;
+}
+
+.projectDetailedGoal p {
+  cursor: pointer;
+}
+
+.moreAboutProjectLink:hover {
+  transition: 0.2s ease;
+  text-decoration: underline;
+}
+
+.projectImages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.projectInformationImageElement {
+  object-fit: cover;
+  height: 200px;
+  width: 370px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}

@@ -1,0 +1,105 @@
+.workshopDetailedMainWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1f3f4;
+  height: 440px;
+  margin-left: 60px;
+  margin-right: 60px;
+}
+
+.randomAssDiv {
+  background-color: #f1f3f4;
+  padding: 30px;
+}
+
+.firstWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 40px;
+  padding: 20px;
+  background-color: #f16165;
+  color: white;
+  height: inherit;
+  width: 28%;
+}
+
+.secondWrapper {
+  height: inherit;
+  width: 72%;
+}
+
+.workshopImageElement {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.workshopDetailedTitle {
+  font-size: 35px;
+  font-family: "Righteous", cursive;
+}
+
+.workshopDetailedGoal {
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 1px;
+}
+
+.workshopDetailedGoal p {
+  cursor: pointer;
+}
+
+.moreAboutWorkshopLink:hover {
+  transition: 0.2s ease;
+  text-decoration: underline;
+}
+
+.workshopInformationContainer {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.workshopImages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.workshopImages img {
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.workshopImages img:hover {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+}
+
+.workshopInformationImageElement {
+  object-fit: cover;
+  height: 200px;
+  width: 370px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.workshopInformationAbout {
+  white-space: pre-wrap;
+  width: 95%;
+}
+
+#fullpage {
+  display: none;
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-size: contain;
+  background-repeat: no-repeat no-repeat;
+  background-position: center center;
+  background-color: black;
+}

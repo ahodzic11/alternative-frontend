@@ -1,0 +1,27 @@
+.adminContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.formContainer {
+  font-family: "Josefin Sans", sans-serif;
+  letter-spacing: 1px;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 30px;
+  border-radius: 2%;
+  box-shadow: rgba(6, 24, 44, 0.4) 0px 0px 0px 2px, rgba(6, 24, 44, 0.65) 0px 4px 6px -1px, rgba(255, 255, 255, 0.08) 0px 1px 0px inset;
+}
+
+.buttonAdminDiv {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+#buttonAdminText {
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 2px;
+}

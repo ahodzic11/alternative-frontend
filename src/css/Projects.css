@@ -1,0 +1,28 @@
+.projectsMainWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1f3f4;
+}
+
+.projectsMainTitle {
+  padding: 20px;
+  font-size: 48px;
+  font-weight: 600;
+  font-family: "Josefin Sans", sans-serif;
+  letter-spacing: 4px;
+}
+
+.projectsIntro {
+  padding-bottom: 20px;
+  font-size: 20px;
+  text-align: center;
+  font-family: "Oswald", sans-serif;
+  padding-left: 70px;
+  padding-right: 70px;
+}
+
+.allProjects {
+  width: 1000px;
+}

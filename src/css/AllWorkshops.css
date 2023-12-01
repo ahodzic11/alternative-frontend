@@ -1,0 +1,122 @@
+.workshopsContainer {
+}
+
+.containerWorkshopItem {
+  height: 300px;
+  width: 300px;
+  background-color: yellow;
+  color: black;
+}
+
+.randomDiv {
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background-color: aqua;
+}
+
+.workshopsMainWrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f1f3f4;
+}
+
+.workshopsMainTitle {
+  padding: 20px;
+  font-size: 48px;
+  font-weight: 600;
+  font-family: "Josefin Sans", sans-serif;
+  letter-spacing: 4px;
+}
+
+.workshopsIntroSmaller {
+  padding-top: 50px;
+  padding-bottom: 20px;
+  font-size: 20px;
+  text-align: center;
+  font-family: "Oswald", sans-serif;
+  width: 75%;
+}
+
+.workshopsAreasContainer {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+  letter-spacing: 3px;
+  padding: 50px;
+}
+
+.allWorkshopsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 60px;
+  padding-left: 30px;
+  padding-right: 30px;
+  flex-wrap: wrap;
+  gap: 30px;
+}
+
+.filtersContainer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  padding-left: 60px;
+  width: 100%;
+  justify-content: left;
+  padding-bottom: 30px;
+}
+
+.filtersHeadline {
+  font-size: 20px;
+  font-family: "Oswald", sans-serif;
+}
+
+.filtersSection {
+  display: flex;
+  flex-direction: row;
+  font-size: 15px;
+  column-gap: 20px;
+  font-family: "Oswald", sans-serif;
+  letter-spacing: 1px;
+}
+
+.filteringInputs {
+  display: flex;
+  flex-direction: row;
+  column-gap: 50px;
+  height: 30px;
+}
+
+.filterAndSortingSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  column-gap: 50px;
+  padding: 10px;
+  width: 100%;
+}
+
+.resetFilters {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: fit-content;
+  background-color: white;
+}
+
+.filteringSmallerContainerTwo {
+  position: absolute;
+  left: -300px;
+  background-color: #dc3545;
+  height: 53px;
+  width: 270px;
+  transition: 1s;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  z-index: -1;
+}

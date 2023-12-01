@@ -1,0 +1,165 @@
+.projectsIntroText {
+  font-family: "Josefin Sans", sans-serif;
+  letter-spacing: 1px;
+  font-size: 32px;
+  font-weight: 400;
+  width: 80%;
+  line-height: 51.2px;
+  text-size-adjust: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.projectsIntro {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.projectNumbers {
+  font-family: "Delicious Handrawn", cursive;
+  font-size: 80px;
+  color: #ed1d24;
+  font-weight: 600;
+}
+
+.projectDetailText {
+  color: #808285;
+  font-family: "Delicious Handrawn", cursive;
+  font-size: 22px;
+  text-align: center;
+}
+
+.projectInfo {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  column-gap: 60px;
+}
+
+.projects {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.donators {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.youth {
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.projectsContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+}
+
+@property --youth {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: true;
+}
+
+.projectNumbersKICK::after {
+  content: counter(youth);
+}
+
+@property --projects {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+
+.projectNumbersPROJECT::after {
+  content: counter(projects);
+}
+
+@property --donators {
+  syntax: "<integer>";
+  initial-value: 0;
+  inherits: false;
+}
+
+.projectNumbersDONATORS::after {
+  content: counter(donators);
+}
+
+@keyframes counter {
+  from {
+    --youth: 0;
+    --projects: 0;
+    --donators: 0;
+  }
+  to {
+    --youth: 520;
+    --projects: 120;
+    --donators: 52;
+  }
+}
+
+.is-visible-youth {
+  position: relative;
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  display: flex;
+  z-index: 1;
+  transition-delay: 0.3s;
+  animation: counter 5s alternate ease-in-out;
+  animation-delay: 0.8s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  counter-reset: youth var(--youth);
+
+  padding: 2rem;
+}
+
+.is-visible-projects {
+  position: relative;
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  display: flex;
+  z-index: 1;
+  transition-delay: 0.6s;
+  animation: counter 5s alternate ease-in-out;
+  animation-delay: 1.1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  counter-reset: projects var(--projects);
+  padding: 2rem;
+}
+
+.is-visible-donators {
+  position: relative;
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  display: flex;
+  z-index: 1;
+  transition-delay: 0.9s;
+  animation: counter 5s alternate ease-in-out;
+  animation-delay: 1.4s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  counter-reset: donators var(--donators);
+  padding: 2rem;
+}
