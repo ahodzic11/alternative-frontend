@@ -14,6 +14,7 @@ import { formatPath } from "../js/namechange";
 import "./../css/ReadProjects.css";
 
 function ReadActivities() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [activities, setActivities] = useState([]);
   const [show, setShow] = useState(false);
   const [chosenActivity, setChosenActivity] = useState({});
@@ -23,7 +24,7 @@ function ReadActivities() {
 
   const getActivities = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/activities`);
+      const res = await axios.get(runningModePath + `/api/activities`);
       setActivities(res.data.data);
     } catch (err) {}
   };
@@ -44,10 +45,10 @@ function ReadActivities() {
   async function handleDelete() {
     setShow(false);
     try {
-      const res = await axios.delete(`http://localhost:5000/api/activities/` + chosenActivity.id);
+      const res = await axios.delete(runningModePath + `/api/activities/` + chosenActivity.id);
     } catch (err) {}
     try {
-      const res = await axios.delete(`http://localhost:5000/delete/activities/` + chosenActivity.naslov);
+      const res = await axios.delete(runningModePath + `/delete/activities/` + chosenActivity.naslov);
     } catch (err) {}
     getActivities();
   }

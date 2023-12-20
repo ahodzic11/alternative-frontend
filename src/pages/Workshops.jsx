@@ -52,13 +52,3 @@ function Workshops() {
 }
 
 export default Workshops;
-
-/*
-<div className="workshopsAreasContainer">
-          {workshopArea.map((area) => (
-            <div className="workshopAreaSingleItem" onClick={handleClick}>
-              <WorkshopArea item={area} />
-            </div>
-          ))}
-        </div>
-*/

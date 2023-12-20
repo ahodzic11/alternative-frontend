@@ -8,13 +8,14 @@ import Form from "react-bootstrap/Form";
 import "./../css/ReadQuestions.css";
 
 function ReadQuestions() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [questions, setQuestions] = useState([]);
   const [questionNames, setQuestionNames] = useState([]);
   const [chosenQuestionName, setChosenQuestionName] = useState("allQuestions");
 
   const getQuestions = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/questions`);
+      const res = await axios.get(runningModePath + `/api/questions`);
       setQuestions(res.data.data);
       var allQuestionNames = [];
       res.data.data.forEach((question) => {

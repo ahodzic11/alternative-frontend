@@ -13,6 +13,7 @@ import Pagination from "../components/Pagination";
 import "./../css/AllProjects.css";
 
 function AllNews() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [newsList, setNews] = useState([]);
   const [filteredNews, setFilteredNews] = useState([]);
   const [nazivFilter, setNazivFilter] = useState("");
@@ -32,7 +33,7 @@ function AllNews() {
   useEffect(() => {
     const getNews = async () => {
       try {
-        const res = await axios.get(`https://nvoapi.nvo-alternative.org/api/news`);
+        const res = await axios.get(runningModePath + `/api/news`);
         setNews(res.data.data);
         setFilteredNews(res.data.data);
         setNPages(Math.ceil(res.data.data.length / recordsPerPage));

@@ -14,6 +14,7 @@ import Modal from "react-bootstrap/Modal";
 import "./../css/ReadWorkshops.css";
 
 function ReadOffers() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [offers, setOffers] = useState([]);
   const [show, setShow] = useState(false);
   const [chosenOffer, setChosenOffer] = useState({});
@@ -23,7 +24,7 @@ function ReadOffers() {
 
   const getOffers = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/offers`);
+      const res = await axios.get(runningModePath + `/api/offers`);
       setOffers(res.data.data);
     } catch (err) {}
   };
@@ -44,10 +45,10 @@ function ReadOffers() {
   async function handleDelete() {
     setShow(false);
     try {
-      const res = await axios.delete(`http://localhost:5000/api/offers/` + chosenOffer.id);
+      const res = await axios.delete(runningModePath + `/api/offers/` + chosenOffer.id);
     } catch (err) {}
     try {
-      const res = await axios.delete(`http://localhost:5000/delete/ponude/` + chosenOffer.naziv);
+      const res = await axios.delete(runningModePath + `/delete/ponude/` + chosenOffer.naziv);
     } catch (err) {}
     getOffers();
   }

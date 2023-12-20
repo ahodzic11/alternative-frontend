@@ -2,7 +2,8 @@ import { formatPath } from "../js/namechange";
 import "./../css/Donator.css";
 
 const Donator = ({ item }) => {
-  const path = "http://localhost:5000/newuploads/donatori/" + formatPath(item.naziv) + "/" + item.naslovnaSlika;
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
+  const path = runningModePath + "/newuploads/donatori/" + formatPath(item.naziv) + "/" + item.naslovnaSlika;
 
   function getPodrsku() {
     var podrska = "";

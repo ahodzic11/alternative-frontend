@@ -13,6 +13,7 @@ import GoToTop from "../components/GoToTop";
 import "./../css/AllProjects.css";
 
 function AllProjects() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [projectList, setProjects] = useState([]);
   const [filteredProjects, setFilteredProjects] = useState([]);
   const [nazivFilter, setNazivFilter] = useState("");
@@ -31,7 +32,7 @@ function AllProjects() {
   useEffect(() => {
     const getProjects = async () => {
       try {
-        const res = await axios.get(`https://nvoapi.nvo-alternative.org/api/projects`);
+        const res = await axios.get(runningModePath + `/api/projects`);
         setProjects(res.data.data);
         setFilteredProjects(res.data.data);
         setNPages(Math.ceil(res.data.data.length / recordsPerPage));
@@ -135,8 +136,8 @@ function AllProjects() {
       filteringIcons.style.transition = "1s";
       filteringIcons.style.color = "white";
       //DA NE BUDE OVERLAY
-      allProjectsContainer.style.transition = "1s";
-      allProjectsContainer.style.paddingLeft = "260px";
+      //allProjectsContainer.style.transition = "1s";
+      //allProjectsContainer.style.paddingLeft = "260px";
     }
   };
 

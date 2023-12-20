@@ -8,13 +8,14 @@ import Form from "react-bootstrap/Form";
 import "./../css/ReadReservations.css";
 
 function ReadReservations() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [reservations, setReservations] = useState([]);
   const [reservationNames, setReservationNames] = useState([]);
   const [chosenReservationName, setChosenReservationName] = useState("allReservations");
 
   const getReservations = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/reservations`);
+      const res = await axios.get(runningModePath + `/api/reservations`);
       setReservations(res.data.data);
       var allReservationNames = [];
       res.data.data.forEach((reservation) => {

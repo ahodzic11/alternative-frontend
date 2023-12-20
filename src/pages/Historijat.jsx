@@ -5,6 +5,7 @@ import GoToTop from "../components/GoToTop";
 import "./../css/Historijat.css";
 
 function Historijat() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const FadeInSection = ({ children }) => {
     const domRef = React.useRef();
 
@@ -131,7 +132,7 @@ function Historijat() {
                     <div className="content-row">Realizacija projekta se odvija u općinama: Kakanj, Drvar, Zenica,Tasovčići (Čapljina), Livno, Ljubuški, Posušje, Stolac i Vareš. </div>
                     <div className="content-row">Paralelno sa podrškom procesu povratka među prvim projektima udruženja bili su projekti i aktivnosti koji su odgovorili na potrebe djece, mladih i žena u općini Kakanj. Udruženje pokreće ekološku sekciju, muzičku školu i školu ritmike za djecu te projekte za osnaživanje djevojka i žena za aktivno učešće u razvoju zajednice.</div>
                     <div className="content-image">
-                      <img className="content-image-element" src="http://localhost:5000/newuploads/historijat/kakoJeSvePocelo.jpg" />
+                      <img className="content-image-element" src={runningModePath + "/newuploads/historijat/kakoJeSvePocelo.jpg"} />
                       <div className="image-description">Posjeta Celeste Sheib direktorice Američkog ORT-a kancelariji „Alternative“, DemNET/USAID program</div>
                     </div>
                   </div>
@@ -163,7 +164,7 @@ function Historijat() {
                     </ul>
                     <div className="content-row">Od osnivanja pa sve do danas (2023.) “Alternative” se razvijaju u jaku i pouzdanu organizaciju - organizaciju kojoj se vjeruje. </div>
                     <div className="content-image">
-                      <img className="content-image-element" src="http://localhost:5000/newuploads/historijat/osnivanje.jpg" />
+                      <img className="content-image-element" src={runningModePath + "/newuploads/historijat/osnivanje.jpg"} />
                       <div className="image-description">Sjednica Upravnog odbora udruženja Alternative</div>
                     </div>
                   </div>
@@ -197,7 +198,7 @@ function Historijat() {
                     <div className="content-row">Važno je naglasiti da su „Alternative“ radile po principu da se nitko ne ubjeđuje ili moli na povratak već da se svima koji to žele prenesu informacije o pravu na povratak. U svim aktivnostima udruženje zagovara slobodu izbora mjesta življenja za svakog čovjeka, ali ne na tuđem ognjištu. </div>
                     <div className="content-row">Kako je vrijeme prolazilo , informiranost ljudi se poboljšavala, strah je nestajao a projekti udruženja su bili sve snažnije podržavani te multiplicirani na druga područja Bosne i Hercegovine.</div>
                     <div className="content-image">
-                      <img className="content-image-element" src="http://localhost:5000/newuploads/historijat/podrska-povratku-i-izgradnja-povjerenja.jpg" />
+                      <img className="content-image-element" src={runningModePath + "/newuploads/historijat/podrska-povratku-i-izgradnja-povjerenja.jpg"} />
                       <div className="image-description">Informativni bilten za povratnike, Realizacija Alternative Kakanj, Pokrovitelj CRS, Finansiran u saradnji sa BPRM</div>
                     </div>
                   </div>
@@ -231,7 +232,7 @@ function Historijat() {
                     <div className="content-row">U jednom kraćem periodu udruženje Alternative uspostavlja lokalni Forum za podršku povratku kroz koji se aktivno uključuju lokalne OCD i pojedinci. </div>
                     <div className="content-row">U ovom razdoblju nismo imali podršku lokalne vlasti. Naprotiv, odbijali su nas primiti i vrlo suzdržano razgovarali s nama na sastancima i konferencijama o organizaciji Međunarodne zajednice. </div>
                     <div className="content-image">
-                      <img className="content-image-element" src="http://localhost:5000/newuploads/historijat/podrska-odrzivom-povratku.jpg" />
+                      <img className="content-image-element" src={runningModePath + "/newuploads/historijat/podrska-odrzivom-povratku.jpg"} />
                       <div className="image-description">Informativni bilten za povratnike, Realizacija Alternative Kakanj, Pokrovitelj CRS, Finansiran u saradnji sa BPRM</div>
                     </div>
                   </div>
@@ -260,7 +261,7 @@ function Historijat() {
                     </div>
                     <div className="content-row">Organizirali smo javne tribine, potpisivanje peticije i sastanke sa raseljenim i izbjeglim osobama</div>
                     <div className="content-image">
-                      <img className="content-image-element" src="http://localhost:5000/newuploads/historijat/zagovaranje-prava-povratnika.jpg" />
+                      <img className="content-image-element" src={runningModePath + "/newuploads/historijat/zagovaranje-prava-povratnika.jpg"} />
                       <div className="image-description">Informativni bilten za povratnike, Realizacija Alternative Kakanj, Pokrovitelj UMCOR</div>
                     </div>
                   </div>
@@ -297,7 +298,7 @@ function Historijat() {
                       konkretne potrebe korisnika i sve složenije kriterije donatora.
                     </div>
                     <div className="content-image">
-                      <img className="content-image-element" src="http://localhost:5000/newuploads/historijat/institucionalno-jacanje.jpg" />
+                      <img className="content-image-element" src={runningModePath + "/newuploads/historijat/institucionalno-jacanje.jpg"} />
                       <div className="image-description">Bilten Alternative, Podržava NVO Fondacija BiH, Finansirano od Care i CIDA</div>
                     </div>
                   </div>
@@ -330,7 +331,7 @@ function Historijat() {
                       Kakanj.
                     </div>
                     <div className="content-image">
-                      <img className="content-image-element" src="http://localhost:5000/newuploads/historijat/ukljucenost-gradana.jpg" />
+                      <img className="content-image-element" src={runningModePath + "/newuploads/historijat/ukljucenost-gradana.jpg"} />
                       <div className="image-description">Bilten Žene u Poduzetništvu, realizacija NVO Alternative uz podršku BHWI</div>
                     </div>
                   </div>
@@ -360,11 +361,11 @@ function Historijat() {
                     <div className="content-row">Od 2005. udruženje postaje prepoznatljivo po organizaciji međunarodnih volonterkih ekoloških petnaestodnevnih kampova. </div>
                     <div className="twoImagesContainer">
                       <div className="content-image">
-                        <img className="content-image-element" src="http://localhost:5000/newuploads/historijat/prvi-projekti-podrzani-od-eu-1.jpg" />
+                        <img className="content-image-element" src={runningModePath + "/newuploads/historijat/prvi-projekti-podrzani-od-eu-1.jpg"} />
                         <div className="image-description">Bilten Jačanje turizma kroz edukaciju i promociju u regiji Centralne BiH - STEP u regiji CBIH, 2005. god.</div>
                       </div>
                       <div className="content-image">
-                        <img className="content-image-element" src="http://localhost:5000/newuploads/historijat/prvi-projekti-podrzani-od-eu-2.jpg" />
+                        <img className="content-image-element" src={runningModePath + "/newuploads/historijat/prvi-projekti-podrzani-od-eu-2.jpg"} />
                         <div className="image-description">Bilten Općine centralne BiH za Evropu, 2005. god., finansiran od Evropske Unije</div>
                       </div>
                     </div>
@@ -394,7 +395,7 @@ function Historijat() {
                     <div className="content-row">U 2012. Alternative implementiraju projekat „Glasanje je naš izbor“ podržan od strane CCI iz sredstava USAID/CAPP II program - Građansko partnersko zastupanje</div>
                     <div className="content-row">2013. implementiran je projekat „Uloga lokalnih zajednica u EU integracijama“ u općinama Vitez, Busovača, Visoko, Travnik Žepče i Zavidovići, podržan sredstvima EU /IPA program – informisanje i komunikacija</div>
                     <div className="content-image">
-                      <img className="content-image-element" src="http://localhost:5000/newuploads/historijat/jacanje-uloge-ocda.jpg" />
+                      <img className="content-image-element" src={runningModePath + "/newuploads/historijat/jacanje-uloge-ocda.jpg"} />
                       <div className="image-description">Odgovorno i održivo upravljanje mjesnim vodovodima, 2007. god.</div>
                     </div>
                   </div>
@@ -428,7 +429,7 @@ function Historijat() {
                       implementacije u prostoru Omladinskog centra „Alternative“ uspostavljaju Dječji kreativni centar kao sigurno mjesto za boravak i zdravo odrastanje djece i mladih.
                     </div>
                     <div className="content-image">
-                      <img className="content-image-element" src="http://localhost:5000/newuploads/historijat/promocija-ucesce-zena-u-politici-i-ekologija.jpg" />
+                      <img className="content-image-element" src={runningModePath + "/newuploads/historijat/promocija-ucesce-zena-u-politici-i-ekologija.jpg"} />
                       <div className="image-description">Forum teatar: "Gdje je žena u BiH društvu?"</div>
                     </div>
                   </div>
@@ -454,7 +455,7 @@ function Historijat() {
                     <div className="content-row">Od juna 2019. Kick postaje samoodrživ kroz razvoj projekata: Dječji kreativni program, Škola programiranja, Robotika, Mala škola engleskog jezika, Rođendanske zabave paralelno nastavljajući podršku mladima uključujući jednaku zastupljenost mladića i djevojaka u jačanju kompetencija za dalju edukaciju i zapošljavanje.</div>
                     <div className="content-row">Kick su u ovom periodu posjećivali brojni gosti među kojima Američki ambasador Eric Nelson i direktorica USAID-a Nancy J. Eslick posjetili su udruženje “Alternative” Kakanj i Kick . Ova posjeta potvrda je uspješnosti Alternativinih projekata.</div>
                     <div className="content-image">
-                      <img className="content-image-element" src="http://localhost:5000/newuploads/historijat/kreativni-inovacijski-centar-kakanj.jpg" />
+                      <img className="content-image-element" src={runningModePath + "/newuploads/historijat/kreativni-inovacijski-centar-kakanj.jpg"} />
                       <div className="image-description">Otvorenje KICK-a, januar 2019. god.</div>
                     </div>
                   </div>
@@ -481,7 +482,7 @@ function Historijat() {
                   </div>
                   <div id="showMoreTextshowMore11" className="showMoreText">
                     <div className="content-image">
-                      <img className="content-image-element" src="http://localhost:5000/newuploads/historijat/bosnia-beyond-the-emergency.jpg" />
+                      <img className="content-image-element" src={runningModePath + "/newuploads/historijat/bosnia-beyond-the-emergency.jpg"} />
                       <div className="image-description">Prvi stanari migrantske kuće u Kaknju, novembar 2022. god.</div>
                     </div>
                   </div>

@@ -4,7 +4,8 @@ import "./../css/Workshop.css";
 import { useNavigate } from "react-router-dom";
 
 const Offer = ({ item }) => {
-  const path = "http://localhost:5000/newuploads/ponude/" + formatPath(item.naziv) + "/" + item.naslovnaSlika;
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
+  const path = runningModePath + "/newuploads/ponude/" + formatPath(item.naziv) + "/" + item.naslovnaSlika;
   const navigate = useNavigate();
 
   const showOffer = (e) => {

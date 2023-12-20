@@ -8,6 +8,7 @@ import "./../css/NewsDetailed.css";
 import { formatPath } from "../js/namechange";
 
 function NewsDetailed() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [news, setNews] = useState([]);
   const { name } = useParams();
   const navigate = useNavigate();
@@ -15,7 +16,7 @@ function NewsDetailed() {
   useEffect(() => {
     const getNews = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/news/` + name);
+        const res = await axios.get(runningModePath + `/api/news/` + name);
         setNews(res.data.data);
       } catch (err) {}
     };
@@ -42,7 +43,7 @@ function NewsDetailed() {
             </div>
           </div>
           <div className="secondWrapperNews">
-            <img className="newsImageElement" src={"http://localhost:5000/newuploads/vijesti/" + name + "/" + news.naslovnaSlika} alt="workshopImageElement" />
+            <img className="newsImageElement" src={runningModePath + "/newuploads/vijesti/" + name + "/" + news.naslovnaSlika} alt="workshopImageElement" />
           </div>
         </div>
       </div>

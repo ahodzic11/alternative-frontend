@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import "./../css/WorkshopInformation.css";
 
 function WorkshopDetailed() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [workshop, setWorkshop] = useState([]);
   const { name } = useParams();
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ function WorkshopDetailed() {
   useEffect(() => {
     const getWorkshop = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/workshops/` + name);
+        const res = await axios.get(runningModePath + `/api/workshops/` + name);
         setWorkshop(res.data.data);
       } catch (err) {}
     };
@@ -41,7 +42,7 @@ function WorkshopDetailed() {
             </div>
           </div>
           <div className="secondWrapper">
-            <img className="workshopImageElement" src={"http://localhost:5000/newuploads/radionice/" + name + "/" + workshop.naslovnaSlika} alt="workshopImageElement" />
+            <img className="workshopImageElement" src={runningModePath + "/newuploads/radionice/" + name + "/" + workshop.naslovnaSlika} alt="workshopImageElement" />
           </div>
         </div>
       </div>

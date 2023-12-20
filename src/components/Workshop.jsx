@@ -2,7 +2,8 @@ import { formatPath } from "../js/namechange";
 import "./../css/Workshop.css";
 
 const Workshop = ({ item }) => {
-  const path = "http://localhost:5000/newuploads/radionice/" + formatPath(item.naslov) + "/" + item.naslovnaSlika;
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
+  const path = runningModePath + "/newuploads/radionice/" + formatPath(item.naslov) + "/" + item.naslovnaSlika;
 
   return (
     <div className="workshopAreaContainer">

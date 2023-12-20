@@ -13,6 +13,7 @@ import { formatDate, formatPath } from "../js/namechange";
 import "./../css/AddWorkshopPage.css";
 
 function AddArticlePage() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [inputs, setInputs] = useState({});
   const [validated, setValidated] = useState(false);
 
@@ -43,7 +44,7 @@ function AddArticlePage() {
     var uploadFormData = new FormData(uploadForm);
 
     try {
-      const response = await axios.post(`http://localhost:5000/upload/clanci/` + inputs.naziv, uploadFormData);
+      const response = await axios.post(runningModePath + `/upload/clanci/` + inputs.naziv, uploadFormData);
     } catch (err) {}
     var firstDate = inputs.datum.split("-");
     var firstCorrectDate = new Date(firstDate[0], firstDate[1] - 1, firstDate[2]);

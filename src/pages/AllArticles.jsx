@@ -13,6 +13,7 @@ import "./../css/AllArticles.css";
 import Pagination from "../components/Pagination";
 
 function AllArticles() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [articleList, setArticles] = useState([]);
   const [filteredArticles, setFilteredArticles] = useState([]);
   const [nazivFilter, setNazivFilter] = useState("");
@@ -29,7 +30,7 @@ function AllArticles() {
   const currentRecords = filteredArticles.slice(indexOfFirstRecord, indexOfLastRecord);
   const [nPages, setNPages] = useState(Math.ceil(filteredArticles.length / recordsPerPage));
   const navigate = useNavigate();
-  const path = "http://localhost:5000/newuploads/clanci/";
+  const path = runningModePath + "/newuploads/clanci/";
 
   const FadeInSection = ({ children }) => {
     const domRef = React.useRef();
@@ -64,7 +65,7 @@ function AllArticles() {
   useEffect(() => {
     const getArticles = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/articles`);
+        const res = await axios.get(runningModePath + `/api/articles`);
         setArticles(res.data.data);
         setFilteredArticles(res.data.data);
         setNPages(Math.ceil(res.data.data.length / recordsPerPage));

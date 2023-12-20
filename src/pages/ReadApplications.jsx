@@ -8,13 +8,14 @@ import Form from "react-bootstrap/Form";
 import "./../css/ReadApplications.css";
 
 function ReadApplications() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [applications, setApplications] = useState([]);
   const [applicationNames, setApplicationNames] = useState([]);
   const [chosenApplicationName, setChosenApplicationName] = useState("allApplications");
 
   const getApplications = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/applications`);
+      const res = await axios.get(runningModePath + `/api/applications`);
       setApplications(res.data.data);
       var allApplicationNames = [];
       res.data.data.forEach((application) => {

@@ -14,6 +14,7 @@ import { formatPath } from "../js/namechange";
 import "./../css/ReadWorkshops.css";
 
 function ReadArticles() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [articles, setArticles] = useState([]);
   const [show, setShow] = useState(false);
   const [chosenArticle, setChosenArticle] = useState({});
@@ -23,7 +24,7 @@ function ReadArticles() {
 
   const getArticles = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/articles`);
+      const res = await axios.get(runningModePath + `/api/articles`);
       setArticles(res.data.data);
     } catch (err) {}
   };
@@ -44,10 +45,10 @@ function ReadArticles() {
   async function handleDelete() {
     setShow(false);
     try {
-      const res = await axios.delete(`http://localhost:5000/api/articles/` + chosenArticle.id);
+      const res = await axios.delete(runningModePath + `/api/articles/` + chosenArticle.id);
     } catch (err) {}
     try {
-      const res = await axios.delete(`http://localhost:5000/delete/clanci/` + chosenArticle.naziv);
+      const res = await axios.delete(runningModePath + `/delete/clanci/` + chosenArticle.naziv);
     } catch (err) {}
     getArticles();
   }

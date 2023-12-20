@@ -10,6 +10,7 @@ import "./../css/AddWorkshopPage.css";
 import { formatPath } from "../js/namechange";
 
 function ChooseImage() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [currentItem, setCurrentItem] = useState({});
   const [images, setImages] = useState([]);
   const [selected, setSelected] = useState({});
@@ -26,19 +27,19 @@ function ChooseImage() {
       else if (type == "donator") folderName = "donatori";
       else if (type == "ponuda") folderName = "ponude";
       else if (type == "clanak") folderName = "clanci";
-      setPath("http://localhost:5000/newuploads/" + folderName + "/" + name + "/");
+      setPath(runningModePath + "/newuploads/" + folderName + "/" + name + "/");
     };
 
     const getSlike = async () => {
       try {
         var response = {};
-        if (type == "workshop") response = await axios.get(`http://localhost:5000/radionice/` + name);
-        else if (type == "project") response = await axios.get(`http://localhost:5000/projekti/` + name);
-        else if (type == "activity") response = await axios.get(`http://localhost:5000/aktivnosti/` + name);
-        else if (type == "news") response = await axios.get(`http://localhost:5000/vijesti/` + name);
-        else if (type == "donator") response = await axios.get(`http://localhost:5000/donatori/` + name);
-        else if (type == "ponuda") response = await axios.get(`http://localhost:5000/ponude/` + name);
-        else if (type == "clanak") response = await axios.get(`http://localhost:5000/clanci/` + name);
+        if (type == "workshop") response = await axios.get(runningModePath + `/radionice/` + name);
+        else if (type == "project") response = await axios.get(runningModePath + `/projekti/` + name);
+        else if (type == "activity") response = await axios.get(runningModePath + `/aktivnosti/` + name);
+        else if (type == "news") response = await axios.get(runningModePath + `/vijesti/` + name);
+        else if (type == "donator") response = await axios.get(runningModePath + `/donatori/` + name);
+        else if (type == "ponuda") response = await axios.get(runningModePath + `/ponude/` + name);
+        else if (type == "clanak") response = await axios.get(runningModePath + `/clanci/` + name);
         setImages(response.data);
       } catch (err) {}
     };
@@ -47,19 +48,19 @@ function ChooseImage() {
       try {
         let res = {};
         if (type == "workshop") {
-          res = await axios.get(`http://localhost:5000/api/workshops/` + name);
+          res = await axios.get(runningModePath + `/api/workshops/` + name);
         } else if (type == "project") {
-          res = await axios.get(`http://localhost:5000/api/projects/` + name);
+          res = await axios.get(runningModePath + `/api/projects/` + name);
         } else if (type == "activity") {
-          res = await axios.get(`http://localhost:5000/api/activities/` + name);
+          res = await axios.get(runningModePath + `/api/activities/` + name);
         } else if (type == "news") {
-          res = await axios.get(`http://localhost:5000/api/news/` + name);
+          res = await axios.get(runningModePath + `/api/news/` + name);
         } else if (type == "donator") {
-          res = await axios.get(`http://localhost:5000/api/donators/` + name);
+          res = await axios.get(runningModePath + `/api/donators/` + name);
         } else if (type == "ponuda") {
-          res = await axios.get(`http://localhost:5000/api/offers/` + name);
+          res = await axios.get(runningModePath + `/api/offers/` + name);
         } else if (type == "clanak") {
-          res = await axios.get(`http://localhost:5000/api/articles/` + name);
+          res = await axios.get(runningModePath + `/api/articles/` + name);
         }
         const dummyWorkshop = res.data.data;
         setCurrentItem(dummyWorkshop);
@@ -70,13 +71,13 @@ function ChooseImage() {
     const getSelected = async () => {
       try {
         let res = {};
-        if (type == "workshop") res = await axios.get(`http://localhost:5000/api/workshops/selectedImage/` + currentItem.id);
-        else if (type == "project") res = await axios.get(`http://localhost:5000/api/projects/selectedImage/` + currentItem.id);
-        else if (type == "activity") res = await axios.get(`http://localhost:5000/api/activities/selectedImage/` + currentItem.id);
-        else if (type == "news") res = await axios.get(`http://localhost:5000/api/news/selectedImage/` + currentItem.id);
-        else if (type == "donator") res = await axios.get(`http://localhost:5000/api/donators/selectedImage/` + currentItem.id);
-        else if (type == "ponuda") res = await axios.get(`http://localhost:5000/api/ponude/selectedImage/` + currentItem.id);
-        else if (type == "clanak") res = await axios.get(`http://localhost:5000/api/articles/selectedImage/` + currentItem.id);
+        if (type == "workshop") res = await axios.get(runningModePath + `/api/workshops/selectedImage/` + currentItem.id);
+        else if (type == "project") res = await axios.get(runningModePath + `/api/projects/selectedImage/` + currentItem.id);
+        else if (type == "activity") res = await axios.get(runningModePath + `/api/activities/selectedImage/` + currentItem.id);
+        else if (type == "news") res = await axios.get(runningModePath + `/api/news/selectedImage/` + currentItem.id);
+        else if (type == "donator") res = await axios.get(runningModePath + `/api/donators/selectedImage/` + currentItem.id);
+        else if (type == "ponuda") res = await axios.get(runningModePath + `/api/ponude/selectedImage/` + currentItem.id);
+        else if (type == "clanak") res = await axios.get(runningModePath + `/api/articles/selectedImage/` + currentItem.id);
       } catch (err) {}
     };
 
@@ -93,13 +94,13 @@ function ChooseImage() {
         naslovnaSlika: selected,
       };
       let res = {};
-      if (type == "workshop") res = await axios.patch(`http://localhost:5000/api/workshops/updateImage`, updatedItem);
-      else if (type == "project") res = await axios.patch(`http://localhost:5000/api/projects/updateImage`, updatedItem);
-      else if (type == "activity") res = await axios.patch(`http://localhost:5000/api/activities/updateImage`, updatedItem);
-      else if (type == "news") res = await axios.patch(`http://localhost:5000/api/news/updateImage`, updatedItem);
-      else if (type == "donator") res = await axios.patch(`http://localhost:5000/api/donators/updateImage`, updatedItem);
-      else if (type == "ponuda") res = await axios.patch(`http://localhost:5000/api/offers/updateImage`, updatedItem);
-      else if (type == "clanak") res = await axios.patch(`http://localhost:5000/api/articles/updateImage`, updatedItem);
+      if (type == "workshop") res = await axios.patch(runningModePath + `/api/workshops/updateImage`, updatedItem);
+      else if (type == "project") res = await axios.patch(runningModePath + `/api/projects/updateImage`, updatedItem);
+      else if (type == "activity") res = await axios.patch(runningModePath + `/api/activities/updateImage`, updatedItem);
+      else if (type == "news") res = await axios.patch(runningModePath + `/api/news/updateImage`, updatedItem);
+      else if (type == "donator") res = await axios.patch(runningModePath + `/api/donators/updateImage`, updatedItem);
+      else if (type == "ponuda") res = await axios.patch(runningModePath + `/api/offers/updateImage`, updatedItem);
+      else if (type == "clanak") res = await axios.patch(runningModePath + `/api/articles/updateImage`, updatedItem);
     } catch (err) {}
   };
 

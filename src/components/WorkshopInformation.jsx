@@ -7,10 +7,11 @@ import ImageViewer from "react-simple-image-viewer";
 import "./../css/WorkshopDetailed.css";
 
 function WorkshopInformation() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [workshop, setWorkshop] = useState([]);
   const [images, setImages] = useState([]);
   const { name } = useParams();
-  const path = "http://localhost:5000/newUploads/radionice/" + name + "/";
+  const path = runningModePath + "/newuploads/radionice/" + name + "/";
   const [currentImage, setCurrentImage] = useState(0);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
 
@@ -27,7 +28,7 @@ function WorkshopInformation() {
   useEffect(() => {
     const getWorkshop = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/workshops/` + name);
+        const res = await axios.get(runningModePath + `/api/workshops/` + name);
         setWorkshop(res.data.data);
       } catch (err) {}
     };
@@ -35,7 +36,7 @@ function WorkshopInformation() {
     const getSlike = async () => {
       console.log(path);
       try {
-        const response = await axios.get(`http://localhost:5000/radionice/` + name);
+        const response = await axios.get(runningModePath + `/radionice/` + name);
         setImages(response.data);
       } catch (err) {}
     };
@@ -50,7 +51,7 @@ function WorkshopInformation() {
       <div className="workshopInformationContainer">
         <div className="workshopInformationTitle">{workshop.naslov}</div>
         <div className="workshopInformationImage">
-          <img src={"http://localhost:5000/newuploads/radionice/" + name + "/" + workshop.naslovnaSlika} alt="naslovnaSlika" />
+          <img src={runningModePath + "/newuploads/radionice/" + name + "/" + workshop.naslovnaSlika} alt="naslovnaSlika" />
         </div>
         <div className="workshopInnerContainer">
           <div className="workshopInformationAbout informationalText">
@@ -102,7 +103,7 @@ function WorkshopInformation() {
             <img key={index} id={image} className="workshopInformationImageElement" src={path + image} alt="slikaSRadionice" onClick={() => openImageViewer(index)} />
           ))}
         </div>
-        {isViewerOpen && <ImageViewer src={images.map((image) => "http://localhost:5000/newuploads/radionice/" + name + "/" + image)} currentIndex={currentImage} disableScroll={false} closeOnClickOutside={true} onClose={closeImageViewer} />}
+        {isViewerOpen && <ImageViewer src={images.map((image) => runningModePath + "/newuploads/radionice/" + name + "/" + image)} currentIndex={currentImage} disableScroll={false} closeOnClickOutside={true} onClose={closeImageViewer} />}
       </div>
       <Footer />
     </>

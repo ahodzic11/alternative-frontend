@@ -16,6 +16,7 @@ import deleteIcon from "./../assets/deleteIconWhite.png";
 import "./../css/EditProjects.css";
 
 function EditArticles() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   let { name } = useParams();
   const [article, setArticle] = useState([]);
   const [validated, setValidated] = useState(false);
@@ -27,7 +28,7 @@ function EditArticles() {
   const handleShow = () => setShow(true);
   const [chosenImage, setChosenImage] = useState({});
   const [tipMedija, setTipMedija] = useState({});
-  const path = "http://localhost:5000/newUploads/clanci/" + name + "/";
+  const path = runningModePath + "/newuploads/clanci/" + name + "/";
 
   const openImageViewer = useCallback((index) => {
     setCurrentImage(index);
@@ -41,7 +42,7 @@ function EditArticles() {
 
   const getSlike = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/clanci/` + name);
+      const response = await axios.get(runningModePath + `/clanci/` + name);
       setImages(response.data);
     } catch (err) {}
   };
@@ -73,18 +74,18 @@ function EditArticles() {
         link: formDataObj.link,
         datum: formatDate(firstCorrectDate),
       };
-      const res = await axios.patch(`http://localhost:5000/api/articles/`, updatedArticle);
+      const res = await axios.patch(runningModePath + `/api/articles/`, updatedArticle);
     } catch (err) {}
     if (formDataObj.naziv != article.naziv) {
       try {
-        const res = await axios.patch(`http://localhost:5000/updatelocation/`, { type: "clanci", oldNaziv: article.naziv, naziv: formDataObj.naziv });
+        const res = await axios.patch(runningModePath + `/updatelocation/`, { type: "clanci", oldNaziv: article.naziv, naziv: formDataObj.naziv });
       } catch (err) {}
       try {
         const updatedItem = {
           id: article.id,
           naslovnaSlika: formatPath(formDataObj.naziv) + article.naslovnaSlika.replace(article.formatiranNaziv, "").replace(".jpg", "") + ".jpg",
         };
-        const res = await axios.patch(`http://localhost:5000/api/articles/updateImage`, updatedItem);
+        const res = await axios.patch(runningModePath + `/api/articles/updateImage`, updatedItem);
       } catch (err) {}
     }
   };
@@ -92,7 +93,7 @@ function EditArticles() {
   useEffect(() => {
     const getArticle = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/articles/` + name);
+        const res = await axios.get(runningModePath + `/api/articles/` + name);
         setArticle(res.data.data);
         setTipMedija(res.data.data.tipMedija);
       } catch (err) {}
@@ -104,7 +105,7 @@ function EditArticles() {
 
   async function updateImage(updatedItem) {
     try {
-      const res = await axios.patch(`http://localhost:5000/api/articles/updateImage`, updatedItem);
+      const res = await axios.patch(runningModePath + `/api/articles/updateImage`, updatedItem);
       console.log(res);
     } catch (err) {}
   }
@@ -112,7 +113,7 @@ function EditArticles() {
   const handleImageDeletion = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.get(`http://localhost:5000/api/articles/selectedImage/` + article.id);
+      const res = await axios.get(runningModePath + `/api/articles/selectedImage/` + article.id);
       if (chosenImage == res.data.data.naslovnaSlika) {
         for (let i = 0; i < images.length; i++) {
           if (images[i] != chosenImage) {
@@ -126,7 +127,7 @@ function EditArticles() {
       }
     } catch (err) {}
     try {
-      const res = await axios.delete(`http://localhost:5000/delete/clanci/` + formatPath(article.naziv) + "/" + chosenImage);
+      const res = await axios.delete(runningModePath + `/delete/clanci/` + formatPath(article.naziv) + "/" + chosenImage);
     } catch (err) {}
     getSlike();
     setShow(false);
@@ -136,7 +137,7 @@ function EditArticles() {
     var uploadForm = document.getElementById("uploadForm");
     var uploadFormData = new FormData(uploadForm);
     try {
-      const response = await axios.patch(`http://localhost:5000/upload/clanci/` + article.naziv, uploadFormData);
+      const response = await axios.patch(runningModePath + `/upload/clanci/` + article.naziv, uploadFormData);
     } catch (err) {
       console.log(err);
     }
@@ -235,7 +236,7 @@ function EditArticles() {
           </Button>
         </Modal.Footer>
       </Modal>
-      {isViewerOpen && <ImageViewer src={images.map((image) => "http://localhost:5000/newuploads/clanci/" + name + "/" + image)} currentIndex={currentImage} disableScroll={false} closeOnClickOutside={true} onClose={closeImageViewer} />}
+      {isViewerOpen && <ImageViewer src={images.map((image) => runningModePath + "/newuploads/clanci/" + name + "/" + image)} currentIndex={currentImage} disableScroll={false} closeOnClickOutside={true} onClose={closeImageViewer} />}
       <AdminLogout />
       <AdminGoBack />
     </>

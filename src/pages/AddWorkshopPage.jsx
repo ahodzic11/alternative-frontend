@@ -13,6 +13,7 @@ import { formatDate, formatPath } from "../js/namechange";
 import "./../css/AddWorkshopPage.css";
 
 function AddWorkshopPage() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [inputs, setInputs] = useState({});
   const [validated, setValidated] = useState(false);
 
@@ -41,7 +42,7 @@ function AddWorkshopPage() {
     var uploadForm = document.getElementById("uploadForm");
     var uploadFormData = new FormData(uploadForm);
     try {
-      const response = await axios.post(`http://localhost:5000/upload/radionice/` + inputs.naslov, uploadFormData);
+      const response = await axios.post(runningModePath + `/upload/radionice/` + inputs.naslov, uploadFormData);
     } catch (err) {
       console.log(err);
     }

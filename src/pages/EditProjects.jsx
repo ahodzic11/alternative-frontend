@@ -16,6 +16,7 @@ import "./../css/EditProjects.css";
 import { englishFormatDate, formatDate, formatPath } from "../js/namechange";
 
 function EditProjects() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [project, setProject] = useState([]);
   let { name } = useParams();
   const [validated, setValidated] = useState(false);
@@ -26,7 +27,7 @@ function EditProjects() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [chosenImage, setChosenImage] = useState({});
-  const path = "http://localhost:5000/newUploads/projekti/" + name + "/";
+  const path = runningModePath + "/newuploads/projekti/" + name + "/";
 
   const openImageViewer = useCallback((index) => {
     setCurrentImage(index);
@@ -40,7 +41,7 @@ function EditProjects() {
 
   const getSlike = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/projekti/` + name);
+      const response = await axios.get(runningModePath + `/projekti/` + name);
       setImages(response.data);
     } catch (err) {}
   };
@@ -77,18 +78,18 @@ function EditProjects() {
         cilj: formDataObj.cilj,
         opisProjekta: formDataObj.opisProjekta,
       };
-      const res = await axios.patch(`http://localhost:5000/api/projects/`, updatedProject);
+      const res = await axios.patch(runningModePath + `/api/projects/`, updatedProject);
     } catch (err) {}
     if (formDataObj.naziv != project.naziv) {
       try {
-        const res = await axios.patch(`http://localhost:5000/updatelocation/`, { type: "projekti", oldNaziv: project.naziv, naziv: formDataObj.naziv });
+        const res = await axios.patch(runningModePath + `/updatelocation/`, { type: "projekti", oldNaziv: project.naziv, naziv: formDataObj.naziv });
       } catch (err) {}
       try {
         const updatedItem = {
           id: project.id,
           naslovnaSlika: formatPath(formDataObj.naziv) + project.naslovnaSlika.replace(project.formatiranNaziv, "").replace(".jpg", "") + ".jpg",
         };
-        const res = await axios.patch(`http://localhost:5000/api/projects/updateImage`, updatedItem);
+        const res = await axios.patch(runningModePath + `/api/projects/updateImage`, updatedItem);
       } catch (err) {}
     }
   };
@@ -96,7 +97,7 @@ function EditProjects() {
   useEffect(() => {
     const getProject = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/projects/` + name);
+        const res = await axios.get(runningModePath + `/api/projects/` + name);
         setProject(res.data.data);
       } catch (err) {}
     };
@@ -107,7 +108,7 @@ function EditProjects() {
 
   async function updateImage(updatedItem) {
     try {
-      const res = await axios.patch(`http://localhost:5000/api/projects/updateImage`, updatedItem);
+      const res = await axios.patch(runningModePath + `/api/projects/updateImage`, updatedItem);
       console.log(res);
     } catch (err) {}
   }
@@ -115,7 +116,7 @@ function EditProjects() {
   const handleImageDeletion = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.get(`http://localhost:5000/api/projects/selectedImage/` + project.id);
+      const res = await axios.get(runningModePath + `/api/projects/selectedImage/` + project.id);
       if (chosenImage == res.data.data.naslovnaSlika) {
         for (let i = 0; i < images.length; i++) {
           if (images[i] != chosenImage) {
@@ -129,7 +130,7 @@ function EditProjects() {
       }
     } catch (err) {}
     try {
-      const res = await axios.delete(`http://localhost:5000/delete/projekti/` + formatPath(project.naziv) + "/" + chosenImage);
+      const res = await axios.delete(runningModePath + `/delete/projekti/` + formatPath(project.naziv) + "/" + chosenImage);
     } catch (err) {}
     getSlike();
     setShow(false);
@@ -139,7 +140,7 @@ function EditProjects() {
     var uploadForm = document.getElementById("uploadForm");
     var uploadFormData = new FormData(uploadForm);
     try {
-      const response = await axios.patch(`http://localhost:5000/upload/projekti/` + project.naziv, uploadFormData);
+      const response = await axios.patch(runningModePath + `/upload/projekti/` + project.naziv, uploadFormData);
     } catch (err) {
       console.log(err);
     }
@@ -255,7 +256,7 @@ function EditProjects() {
           </Button>
         </Modal.Footer>
       </Modal>
-      {isViewerOpen && <ImageViewer src={images.map((image) => "http://localhost:5000/newuploads/projekti/" + name + "/" + image)} currentIndex={currentImage} disableScroll={false} closeOnClickOutside={true} onClose={closeImageViewer} />}
+      {isViewerOpen && <ImageViewer src={images.map((image) => runningModePath + "/newuploads/projekti/" + name + "/" + image)} currentIndex={currentImage} disableScroll={false} closeOnClickOutside={true} onClose={closeImageViewer} />}
       <AdminLogout />
       <AdminGoBack />
     </>

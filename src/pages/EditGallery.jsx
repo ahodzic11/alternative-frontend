@@ -13,6 +13,7 @@ import Button from "react-bootstrap/Button";
 import "./../css/EditGallery.css";
 
 function EditGallery() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [inputs, setInputs] = useState({});
   const [validated, setValidated] = useState(false);
   const [images, setImages] = useState([]);
@@ -22,7 +23,7 @@ function EditGallery() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [chosenImage, setChosenImage] = useState({});
-  const path = "http://localhost:5000/newuploads/galerija/";
+  const path = runningModePath + "/newuploads/galerija/";
 
   const openImageViewer = useCallback((index) => {
     setCurrentImage(index);
@@ -43,7 +44,7 @@ function EditGallery() {
   const handleImageDeletion = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.delete(`http://localhost:5000/deleteimage/galerija/` + chosenImage);
+      const res = await axios.delete(runningModePath + `/deleteimage/galerija/` + chosenImage);
     } catch (err) {}
     getSlike();
     setShow(false);
@@ -51,7 +52,7 @@ function EditGallery() {
 
   const getSlike = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/galerija/`);
+      const response = await axios.get(runningModePath + `/galerija/`);
       setImages(response.data);
     } catch (err) {}
   };
@@ -60,7 +61,7 @@ function EditGallery() {
     var uploadForm = document.getElementById("uploadForm");
     var uploadFormData = new FormData(uploadForm);
     try {
-      const response = await axios.patch(`http://localhost:5000/upload/galerija/`, uploadFormData);
+      const response = await axios.patch(runningModePath + `/upload/galerija/`, uploadFormData);
     } catch (err) {
       console.log(err);
     }
@@ -111,7 +112,7 @@ function EditGallery() {
           </Button>
         </Modal.Footer>
       </Modal>
-      {isViewerOpen && <ImageViewer src={images.map((image) => "http://localhost:5000/newuploads/galerija/" + image)} currentIndex={currentImage} disableScroll={false} closeOnClickOutside={true} onClose={closeImageViewer} />}
+      {isViewerOpen && <ImageViewer src={images.map((image) => runningModePath + "/newuploads/galerija/" + image)} currentIndex={currentImage} disableScroll={false} closeOnClickOutside={true} onClose={closeImageViewer} />}
       <AdminLogout />
       <AdminGoBack />
     </>

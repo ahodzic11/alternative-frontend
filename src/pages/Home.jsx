@@ -20,7 +20,6 @@ function Home() {
         // In your case there's only one element to observe:
         if (entries[0].isIntersecting) {
           // Not possible to set it back to false like this:
-          console.log("ugledalo ga");
           setVisible(true);
 
           // No need to keep observing:
@@ -41,18 +40,22 @@ function Home() {
   };
 
   return (
-    <div>
-      <div id="navigationFadeInDiv" className="navigationFadeInDiv">
-        <Navigation />
-      </div>
+    <>
+      <Navigation />
       <FillerBar />
       <ProjectsBar />
       <AcitivityBar />
       <DetailedProjectsBar />
       <GoToTop />
       <Footer />
-    </div>
+    </>
   );
 }
 
 export default Home;
+
+/*
+<div id="navigationFadeInDiv" className="navigationFadeInDiv">
+        <Navigation />
+      </div>
+*/

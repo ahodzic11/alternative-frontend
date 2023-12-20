@@ -14,6 +14,7 @@ import { formatPath } from "../js/namechange";
 import "./../css/ReadProjects.css";
 
 function ReadNews() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [news, setNews] = useState([]);
   const [show, setShow] = useState(false);
   const [chosenNews, setChosenNews] = useState({});
@@ -23,7 +24,7 @@ function ReadNews() {
 
   const getNews = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/news`);
+      const res = await axios.get(runningModePath + `/api/news`);
       setNews(res.data.data);
     } catch (err) {}
   };
@@ -44,10 +45,10 @@ function ReadNews() {
   async function handleDelete() {
     setShow(false);
     try {
-      const res = await axios.delete(`http://localhost:5000/api/news/` + chosenNews.id);
+      const res = await axios.delete(runningModePath + `/api/news/` + chosenNews.id);
     } catch (err) {}
     try {
-      const res = await axios.delete(`http://localhost:5000/delete/vijesti/` + chosenNews.naziv);
+      const res = await axios.delete(runningModePath + `/delete/vijesti/` + chosenNews.naziv);
     } catch (err) {}
     getNews();
   }

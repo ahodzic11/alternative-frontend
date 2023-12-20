@@ -3,7 +3,8 @@ import React from "react";
 import "./../css/FillerBar.css";
 
 function FillerBar() {
-  const path = "http://localhost:5000/newuploads/videa/kickbw2.mp4";
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
+  const path = runningModePath + "/newuploads/videa/kickbw2.mp4";
 
   function joinIn() {
     const element = document.getElementById("joinPlace");
@@ -27,9 +28,5 @@ function FillerBar() {
     </div>
   );
 }
-
-/*
-
-*/
 
 export default FillerBar;

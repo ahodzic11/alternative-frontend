@@ -58,18 +58,27 @@ function Navigation() {
             </div>
           </div>
         </div>
-        <LinkContainer to="/projekti">
-          <Nav.Item>PROJEKTI</Nav.Item>
-        </LinkContainer>
-        <LinkContainer to="/aktivnosti">
-          <Nav.Item>AKTIVNOSTI</Nav.Item>
-        </LinkContainer>
-        <LinkContainer to="/donatori">
-          <Nav.Item>DONATORI</Nav.Item>
-        </LinkContainer>
-        <LinkContainer to="/vijesti">
-          <Nav.Item>NOVOSTI</Nav.Item>
-        </LinkContainer>
+        <div className="dropdown">
+          <div className="dropdown-headline">
+            <a className="aboutUsLink" href="/projekti">
+              PROJEKTI
+            </a>
+          </div>
+          <div className="dropdown-content">
+            <div className="dropdown-content-item">
+              <a href="/aktivnosti"> AKTIVNOSTI</a>
+            </div>
+            <div className="dropdown-content-item">
+              <a href="/vijesti">NOVOSTI</a>
+            </div>
+            <div className="dropdown-content-item">
+              <a href="/workshops">RADIONICE</a>
+            </div>
+            <div className="dropdown-content-item">
+              <a href="/galerija">GALERIJA</a>
+            </div>
+          </div>
+        </div>
         <div className="dropdown">
           <div className="dropdown-headline">
             <a className="aboutUsLink">DRUGI O NAMA</a>
@@ -83,14 +92,8 @@ function Navigation() {
             </div>
           </div>
         </div>
-        <LinkContainer to="/workshops">
-          <Nav.Item>RADIONICE</Nav.Item>
-        </LinkContainer>
         <LinkContainer to="/treneri">
           <Nav.Item>TRENERI</Nav.Item>
-        </LinkContainer>
-        <LinkContainer to="/galerija">
-          <Nav.Item>GALERIJA</Nav.Item>
         </LinkContainer>
         <Nav.Item onClick={contactUs}>KONTAKT</Nav.Item>
       </Nav>

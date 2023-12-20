@@ -13,6 +13,7 @@ import ImageViewer from "react-simple-image-viewer";
 import "./../css/SingleOffer.css";
 
 function SingleOffer() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   let { name } = useParams();
   const [offer, setOffer] = useState([]);
   const [inputs, setInputs] = useState({});
@@ -21,7 +22,7 @@ function SingleOffer() {
   const [isViewerOpen, setIsViewerOpen] = useState(false);
   const [backgroundImage, setBackgroundImage] = useState({});
   const [tipKontakta, setTipKontakta] = useState("E-mail");
-  const path = "http://localhost:5000/newuploads/ponude/" + name + "/";
+  const path = runningModePath + "/newuploads/ponude/" + name + "/";
 
   const openImageViewer = useCallback((index) => {
     setCurrentImage(index);
@@ -42,7 +43,7 @@ function SingleOffer() {
   useEffect(() => {
     const getOffer = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/offers/` + name);
+        const res = await axios.get(runningModePath + `/api/offers/` + name);
         const dummyWorkshop = res.data.data;
         setOffer(dummyWorkshop);
       } catch (err) {}
@@ -51,7 +52,7 @@ function SingleOffer() {
     const getSlike = async () => {
       console.log(path);
       try {
-        const response = await axios.get(`http://localhost:5000/ponude/` + name);
+        const response = await axios.get(runningModePath + `/ponude/` + name);
         setImages(response.data);
       } catch (err) {}
     };
@@ -198,7 +199,7 @@ function SingleOffer() {
             <div className="bookingContainer">
               <div className="bookingTitle">
                 <div className="bookingIcon">
-                  <img className="bookingImage" src="http://localhost:5000/newuploads/ikone/booking.png" alt="bookingLogo" />
+                  <img className="bookingImage" src={runningModePath + "/newuploads/ikone/booking.png"} alt="bookingLogo" />
                 </div>
                 <div className="bookingMainTitle">Booking Formular</div>
               </div>
@@ -238,7 +239,7 @@ function SingleOffer() {
             <div className="bookingContainer">
               <div className="bookingTitle">
                 <div className="bookingIcon">
-                  <img className="applyImage" src="http://localhost:5000/newuploads/ikone/booking.png" alt="bookingLogo" />
+                  <img className="applyImage" src={runningModePath + "/newuploads/ikone/booking.png"} alt="bookingLogo" />
                 </div>
                 <div className="bookingMainTitle applicationTitle">Pošalji prijavu</div>
               </div>
@@ -267,7 +268,7 @@ function SingleOffer() {
           <div className="bookingContainer">
             <div className="bookingTitle">
               <div className="bookingIcon">
-                <img className="bookingImage" src="http://localhost:5000/newuploads/ikone/envelope.png" alt="bookingLogo" />
+                <img className="bookingImage" src={runningModePath + "/newuploads/ikone/envelope.png"} alt="bookingLogo" />
               </div>
               <div className="bookingMainTitle">Pošalji upit za {offer.tipPrijave == "Prijava" ? <>prijavu</> : <>rezervaciju</>} </div>
             </div>
@@ -315,27 +316,10 @@ function SingleOffer() {
           </div>
         </div>
       </div>
-      {isViewerOpen && <ImageViewer src={images.map((image) => "http://localhost:5000/newuploads/ponude/" + name + "/" + image)} currentIndex={currentImage} disableScroll={false} closeOnClickOutside={true} onClose={closeImageViewer} />}
+      {isViewerOpen && <ImageViewer src={images.map((image) => runningModePath + "/newuploads/ponude/" + name + "/" + image)} currentIndex={currentImage} disableScroll={false} closeOnClickOutside={true} onClose={closeImageViewer} />}
       <Footer />
     </>
   );
 }
 
 export default SingleOffer;
-
-/*
-<div className="offerImages">
-            {images.map((image) => (
-              <img id={image} className="offerInformationImageElement" src={path + image} alt="slikaSRadionice" />
-            ))}
-          </div>
-*/
-
-// 172
-/*
-<div className="workshopImages offersImageContainer">
-            {images.map((image, index) => (
-              <img key={index} id={image} className="workshopInformationImageElement" src={path + image} alt="slikaSRadionice" onClick={() => openImageViewer(index)} />
-            ))}
-          </div>
-*/

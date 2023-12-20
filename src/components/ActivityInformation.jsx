@@ -7,10 +7,11 @@ import ImageViewer from "react-simple-image-viewer";
 import "./../css/WorkshopDetailed.css";
 
 function ActivityInformation() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [activity, setActivity] = useState([]);
   const [images, setImages] = useState([]);
   const { name } = useParams();
-  const path = "http://localhost:5000/newUploads/aktivnosti/" + name + "/";
+  const path = runningModePath + "/newuploads/aktivnosti/" + name + "/";
   const [currentImage, setCurrentImage] = useState(0);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
 
@@ -27,15 +28,14 @@ function ActivityInformation() {
   useEffect(() => {
     const getActivity = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/activities/` + name);
+        const res = await axios.get(runningModePath + `/api/activities/` + name);
         setActivity(res.data.data);
       } catch (err) {}
     };
 
     const getSlike = async () => {
-      console.log(path);
       try {
-        const response = await axios.get(`http://localhost:5000/aktivnosti/` + name);
+        const response = await axios.get(runningModePath + `/aktivnosti/` + name);
         setImages(response.data);
       } catch (err) {}
     };
@@ -50,7 +50,7 @@ function ActivityInformation() {
       <div className="workshopInformationContainer">
         <div className="workshopInformationTitle">{activity.naziv}</div>
         <div className="workshopInformationImage">
-          <img src={"http://localhost:5000/newuploads/aktivnosti/" + name + "/" + activity.naslovnaSlika} alt="naslovnaSlika" />
+          <img src={runningModePath + "/newuploads/aktivnosti/" + name + "/" + activity.naslovnaSlika} alt="naslovnaSlika" />
         </div>
         <div className="workshopInformationAbout informationalText">
           <span>Sadržaj aktivnosti: </span>
@@ -82,7 +82,7 @@ function ActivityInformation() {
             <img key={index} id={image} className="workshopInformationImageElement" src={path + image} alt="slikaSRadionice" onClick={() => openImageViewer(index)} />
           ))}
         </div>
-        {isViewerOpen && <ImageViewer src={images.map((image) => "http://localhost:5000/newuploads/aktivnosti/" + name + "/" + image)} currentIndex={currentImage} disableScroll={false} closeOnClickOutside={true} onClose={closeImageViewer} />}
+        {isViewerOpen && <ImageViewer src={images.map((image) => runningModePath + "/newuploads/aktivnosti/" + name + "/" + image)} currentIndex={currentImage} disableScroll={false} closeOnClickOutside={true} onClose={closeImageViewer} />}
       </div>
       <Footer />
     </>

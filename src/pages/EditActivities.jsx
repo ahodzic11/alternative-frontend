@@ -16,6 +16,7 @@ import { englishFormatDate, formatDate, formatPath } from "../js/namechange";
 import "./../css/EditProjects.css";
 
 function EditActivities() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   let { name } = useParams();
   const [activity, setActivity] = useState([]);
   const [validated, setValidated] = useState(false);
@@ -26,7 +27,7 @@ function EditActivities() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [chosenImage, setChosenImage] = useState({});
-  const path = "http://localhost:5000/newUploads/aktivnosti/" + name + "/";
+  const path = runningModePath + "/newUploads/aktivnosti/" + name + "/";
 
   const openImageViewer = useCallback((index) => {
     setCurrentImage(index);
@@ -40,7 +41,7 @@ function EditActivities() {
 
   const getSlike = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/aktivnosti/` + name);
+      const response = await axios.get(runningModePath + `/aktivnosti/` + name);
       setImages(response.data);
     } catch (err) {}
   };
@@ -72,18 +73,18 @@ function EditActivities() {
         nazivProjekta: formDataObj.nazivProjekta,
         opisAktivnosti: formDataObj.opisAktivnosti,
       };
-      const res = await axios.patch(`http://localhost:5000/api/activities/`, updatedActivity);
+      const res = await axios.patch(runningModePath + `/api/activities/`, updatedActivity);
     } catch (err) {}
     if (formDataObj.naziv != activity.naziv) {
       try {
-        const res = await axios.patch(`http://localhost:5000/updatelocation/`, { type: "aktivnosti", oldNaziv: activity.naziv, naziv: formDataObj.naziv });
+        const res = await axios.patch(runningModePath + `/updatelocation/`, { type: "aktivnosti", oldNaziv: activity.naziv, naziv: formDataObj.naziv });
       } catch (err) {}
       try {
         const updatedItem = {
           id: activity.id,
           naslovnaSlika: formatPath(formDataObj.naziv) + activity.naslovnaSlika.replace(activity.formatiranNaziv, "").replace(".jpg", "") + ".jpg",
         };
-        const res = await axios.patch(`http://localhost:5000/api/activities/updateImage`, updatedItem);
+        const res = await axios.patch(runningModePath + `/api/activities/updateImage`, updatedItem);
       } catch (err) {}
     }
   };
@@ -91,7 +92,7 @@ function EditActivities() {
   useEffect(() => {
     const getActivity = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/activities/` + name);
+        const res = await axios.get(runningModePath + `/api/activities/` + name);
         console.log(res.data.data);
         setActivity(res.data.data);
       } catch (err) {}
@@ -103,7 +104,7 @@ function EditActivities() {
 
   async function updateImage(updatedItem) {
     try {
-      const res = await axios.patch(`http://localhost:5000/api/activities/updateImage`, updatedItem);
+      const res = await axios.patch(runningModePath + `/api/activities/updateImage`, updatedItem);
       console.log(res);
     } catch (err) {}
   }
@@ -111,7 +112,7 @@ function EditActivities() {
   const handleImageDeletion = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.get(`http://localhost:5000/api/activities/selectedImage/` + activity.id);
+      const res = await axios.get(runningModePath + `/api/activities/selectedImage/` + activity.id);
       if (chosenImage == res.data.data.naslovnaSlika) {
         for (let i = 0; i < images.length; i++) {
           if (images[i] != chosenImage) {
@@ -125,7 +126,7 @@ function EditActivities() {
       }
     } catch (err) {}
     try {
-      const res = await axios.delete(`http://localhost:5000/delete/aktivnosti/` + formatPath(activity.naziv) + "/" + chosenImage);
+      const res = await axios.delete(runningModePath + `/delete/aktivnosti/` + formatPath(activity.naziv) + "/" + chosenImage);
     } catch (err) {}
     getSlike();
     setShow(false);
@@ -135,7 +136,7 @@ function EditActivities() {
     var uploadForm = document.getElementById("uploadForm");
     var uploadFormData = new FormData(uploadForm);
     try {
-      const response = await axios.patch(`http://localhost:5000/upload/aktivnosti/` + activity.naziv, uploadFormData);
+      const response = await axios.patch(runningModePath + `/upload/aktivnosti/` + activity.naziv, uploadFormData);
     } catch (err) {
       console.log(err);
     }
@@ -232,7 +233,7 @@ function EditActivities() {
           </Button>
         </Modal.Footer>
       </Modal>
-      {isViewerOpen && <ImageViewer src={images.map((image) => "http://localhost:5000/newuploads/aktivnosti/" + name + "/" + image)} currentIndex={currentImage} disableScroll={false} closeOnClickOutside={true} onClose={closeImageViewer} />}
+      {isViewerOpen && <ImageViewer src={images.map((image) => runningModePath + "/newuploads/aktivnosti/" + name + "/" + image)} currentIndex={currentImage} disableScroll={false} closeOnClickOutside={true} onClose={closeImageViewer} />}
       <AdminLogout />
       <AdminGoBack />
     </>

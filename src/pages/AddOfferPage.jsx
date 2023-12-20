@@ -13,6 +13,7 @@ import axios from "axios";
 import "./../css/AddWorkshopPage.css";
 
 function AddOfferPage() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [inputs, setInputs] = useState({});
   const [validated, setValidated] = useState(false);
 
@@ -43,7 +44,7 @@ function AddOfferPage() {
     var uploadForm = document.getElementById("uploadForm");
     var uploadFormData = new FormData(uploadForm);
     try {
-      const response = await axios.post(`http://localhost:5000/upload/ponude/` + inputs.naziv, uploadFormData);
+      const response = await axios.post(runningModePath + `/upload/ponude/` + inputs.naziv, uploadFormData);
     } catch (err) {}
     let pocetakPonude = null,
       krajPonude = null;

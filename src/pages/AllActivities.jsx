@@ -13,6 +13,7 @@ import GoToTop from "../components/GoToTop";
 import "./../css/AllActivities.css";
 
 function AllActivities() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [activityList, setActivities] = useState([]);
   const [filteredActivities, setFilteredActivities] = useState([]);
   const [nazivFilter, setNazivFilter] = useState("");
@@ -32,7 +33,7 @@ function AllActivities() {
   useEffect(() => {
     const getActivities = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/activities`);
+        const res = await axios.get(runningModePath + `/api/activities`);
         setActivities(res.data.data);
         setFilteredActivities(res.data.data);
         setNPages(Math.ceil(res.data.data.length / recordsPerPage));

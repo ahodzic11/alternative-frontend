@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import "./../css/ProjectDetailed.css";
 
 function ProjectDetailed() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [project, setProject] = useState([]);
   const { name } = useParams();
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ function ProjectDetailed() {
   useEffect(() => {
     const getProject = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/projects/` + name);
+        const res = await axios.get(runningModePath + `/api/projects/` + name);
         setProject(res.data.data);
       } catch (err) {}
     };
@@ -41,7 +42,7 @@ function ProjectDetailed() {
             </div>
           </div>
           <div className="secondWrapperProject">
-            <img className="workshopImageElement" src={"http://localhost:5000/newuploads/projekti/" + name + "/" + project.naslovnaSlika} alt="workshopImageElement" />
+            <img className="workshopImageElement" src={runningModePath + "/newuploads/projekti/" + name + "/" + project.naslovnaSlika} alt="workshopImageElement" />
           </div>
         </div>
       </div>

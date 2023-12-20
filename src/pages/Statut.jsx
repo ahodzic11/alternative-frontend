@@ -1,12 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
-import statut from "./../assets/pdffiles/Statut.pdf";
 import { Document, Page } from "react-pdf/dist/esm/entry.webpack";
 import Button from "react-bootstrap/Button";
+import axios from "axios";
 import "./../css/Statut.css";
 
 function Statut() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
+  const [statut, setStatut] = useState();
+
+  useEffect(() => {
+    const getStatut = async () => {
+      try {
+        const res = await axios.get(runningModePath + `/statut/`);
+        setStatut(res.data);
+      } catch (err) {}
+    };
+
+    getStatut();
+  }, [runningModePath]);
+
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [secondPageNumber, setSecondPageNumber] = useState(2);

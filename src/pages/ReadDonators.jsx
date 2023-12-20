@@ -12,12 +12,13 @@ import "./../css/ReadWorkshops.css";
 import { formatPath } from "../js/namechange";
 
 function ReadDonators() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [donators, setDonators] = useState([]);
   const navigate = useNavigate();
 
   const getDonators = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/donators`);
+      const res = await axios.get(runningModePath + `/api/donators`);
       setDonators(res.data.data);
     } catch (err) {}
   };
@@ -38,7 +39,7 @@ function ReadDonators() {
   async function deleteDonatorItem(e, item) {
     e.preventDefault();
     try {
-      const res = await axios.delete(`http://localhost:5000/api/donators/` + item.id);
+      const res = await axios.delete(runningModePath + `/api/donators/` + item.id);
     } catch (err) {}
     getDonators();
   }

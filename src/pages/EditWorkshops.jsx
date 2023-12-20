@@ -16,6 +16,7 @@ import Modal from "react-bootstrap/Modal";
 import "./../css/ReadWorkshops.css";
 
 function EditWorkshops() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   let { name } = useParams();
   const [workshop, setWorkshop] = useState([]);
   const [oblast, setOblast] = useState({});
@@ -27,7 +28,7 @@ function EditWorkshops() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [chosenImage, setChosenImage] = useState({});
-  const path = "http://localhost:5000/newUploads/radionice/" + name + "/";
+  const path = runningModePath + "/newuploads/radionice/" + name + "/";
   const navigate = useNavigate();
 
   const openImageViewer = useCallback((index) => {
@@ -42,7 +43,7 @@ function EditWorkshops() {
 
   const getSlike = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/radionice/` + name);
+      const response = await axios.get(runningModePath + `/radionice/` + name);
       setImages(response.data);
     } catch (err) {}
   };
@@ -77,19 +78,19 @@ function EditWorkshops() {
         opisRadionice: formDataObj.opisRadionice,
         oblastRadionice: formDataObj.oblastRadionice,
       };
-      const res = await axios.patch(`http://localhost:5000/api/workshops/`, updatedWorkshop);
+      const res = await axios.patch(runningModePath + `/api/workshops/`, updatedWorkshop);
     } catch (err) {}
     if (formDataObj.naslov != workshop.naslov) {
       console.log("uslo ovdje");
       try {
-        const res = await axios.patch(`http://localhost:5000/updatelocation/`, { type: "radionice", oldNaziv: workshop.naslov, naziv: formDataObj.naslov });
+        const res = await axios.patch(runningModePath + `/updatelocation/`, { type: "radionice", oldNaziv: workshop.naslov, naziv: formDataObj.naslov });
       } catch (err) {}
       try {
         const updatedItem = {
           id: workshop.id,
           naslovnaSlika: formatPath(formDataObj.naslov) + workshop.naslovnaSlika.replace(workshop.formatiranNaslov, "").replace(".jpg", "") + ".jpg",
         };
-        const res = await axios.patch(`http://localhost:5000/api/workshops/updateImage`, updatedItem);
+        const res = await axios.patch(runningModePath + `/api/workshops/updateImage`, updatedItem);
       } catch (err) {}
     }
   };
@@ -97,7 +98,7 @@ function EditWorkshops() {
   useEffect(() => {
     const getWorkshop = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/workshops/` + name);
+        const res = await axios.get(runningModePath + `/api/workshops/` + name);
         const dummyWorkshop = res.data.data;
         setOblast(dummyWorkshop.oblastRadionice);
         setWorkshop(dummyWorkshop);
@@ -110,7 +111,7 @@ function EditWorkshops() {
 
   async function updateImage(updatedItem) {
     try {
-      const res = await axios.patch(`http://localhost:5000/api/workshops/updateImage`, updatedItem);
+      const res = await axios.patch(runningModePath + `/api/workshops/updateImage`, updatedItem);
       console.log(res);
     } catch (err) {}
   }
@@ -118,7 +119,7 @@ function EditWorkshops() {
   const handleImageDeletion = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.get(`http://localhost:5000/api/workshops/selectedImage/` + workshop.id);
+      const res = await axios.get(runningModePath + `/api/workshops/selectedImage/` + workshop.id);
       if (chosenImage == res.data.data.naslovnaSlika) {
         for (let i = 0; i < images.length; i++) {
           if (images[i] != chosenImage) {
@@ -132,7 +133,7 @@ function EditWorkshops() {
       }
     } catch (err) {}
     try {
-      const res = await axios.delete(`http://localhost:5000/delete/radionice/` + formatPath(workshop.naslov) + "/" + chosenImage);
+      const res = await axios.delete(runningModePath + `/delete/radionice/` + formatPath(workshop.naslov) + "/" + chosenImage);
     } catch (err) {}
     getSlike();
     setShow(false);
@@ -142,7 +143,7 @@ function EditWorkshops() {
     var uploadForm = document.getElementById("uploadForm");
     var uploadFormData = new FormData(uploadForm);
     try {
-      const response = await axios.patch(`http://localhost:5000/upload/radionice/` + workshop.naslov, uploadFormData);
+      const response = await axios.patch(runningModePath + `/upload/radionice/` + workshop.naslov, uploadFormData);
     } catch (err) {
       console.log(err);
     }
@@ -277,7 +278,7 @@ function EditWorkshops() {
           </Button>
         </Modal.Footer>
       </Modal>
-      {isViewerOpen && <ImageViewer src={images.map((image) => "http://localhost:5000/newuploads/radionice/" + name + "/" + image)} currentIndex={currentImage} disableScroll={false} closeOnClickOutside={true} onClose={closeImageViewer} />}
+      {isViewerOpen && <ImageViewer src={images.map((image) => runningModePath + "/newuploads/radionice/" + name + "/" + image)} currentIndex={currentImage} disableScroll={false} closeOnClickOutside={true} onClose={closeImageViewer} />}
       <AdminLogout />
       <AdminGoBack />
     </>

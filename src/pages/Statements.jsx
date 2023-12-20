@@ -4,7 +4,8 @@ import Navigation from "../components/Navigation";
 import "./../css/Statements.css";
 
 function Statements() {
-  const path = "http://localhost:5000/newuploads/staff/";
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
+  const path = runningModePath + "/newuploads/staff/";
   return (
     <>
       <Navigation />

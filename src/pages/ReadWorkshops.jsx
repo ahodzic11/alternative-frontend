@@ -14,6 +14,7 @@ import Modal from "react-bootstrap/Modal";
 import "./../css/ReadWorkshops.css";
 
 function ReadWorkshops() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [workshops, setWorkshops] = useState([]);
   const [show, setShow] = useState(false);
   const [chosenWorkshop, setChosenWorkshop] = useState({});
@@ -23,7 +24,7 @@ function ReadWorkshops() {
 
   const getWorkshops = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/workshops`);
+      const res = await axios.get(runningModePath + `/api/workshops`);
       setWorkshops(res.data.data);
     } catch (err) {}
   };
@@ -44,10 +45,10 @@ function ReadWorkshops() {
   async function handleDelete() {
     setShow(false);
     try {
-      const res = await axios.delete(`http://localhost:5000/api/workshops/` + chosenWorkshop.id);
+      const res = await axios.delete(runningModePath + `/api/workshops/` + chosenWorkshop.id);
     } catch (err) {}
     try {
-      const res = await axios.delete(`http://localhost:5000/delete/radionice/` + chosenWorkshop.naslov);
+      const res = await axios.delete(runningModePath + `/delete/radionice/` + chosenWorkshop.naslov);
     } catch (err) {}
     getWorkshops();
   }

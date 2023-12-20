@@ -16,6 +16,7 @@ import { englishFormatDate, formatDate, formatPath } from "../js/namechange";
 import "./../css/EditProjects.css";
 
 function EditNews() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   let { name } = useParams();
   const [news, setNews] = useState([]);
   const [validated, setValidated] = useState(false);
@@ -26,7 +27,7 @@ function EditNews() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [chosenImage, setChosenImage] = useState({});
-  const path = "http://localhost:5000/newUploads/vijesti/" + name + "/";
+  const path = runningModePath + "/newuploads/vijesti/" + name + "/";
 
   const openImageViewer = useCallback((index) => {
     setCurrentImage(index);
@@ -40,7 +41,7 @@ function EditNews() {
 
   const getSlike = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/vijesti/` + name);
+      const response = await axios.get(runningModePath + `/vijesti/` + name);
       setImages(response.data);
     } catch (err) {}
   };
@@ -70,18 +71,18 @@ function EditNews() {
         datum: formatDate(firstCorrectDate),
         tekstVijesti: formDataObj.tekstVijesti,
       };
-      const res = await axios.patch(`http://localhost:5000/api/news/`, updatedNewsArticle);
+      const res = await axios.patch(runningModePath + `/api/news/`, updatedNewsArticle);
     } catch (err) {}
     if (formDataObj.naziv != news.naziv) {
       try {
-        const res = await axios.patch(`http://localhost:5000/updatelocation/`, { type: "vijesti", oldNaziv: news.naziv, naziv: formDataObj.naziv });
+        const res = await axios.patch(runningModePath + `/updatelocation/`, { type: "vijesti", oldNaziv: news.naziv, naziv: formDataObj.naziv });
       } catch (err) {}
       try {
         const updatedItem = {
           id: news.id,
           naslovnaSlika: formatPath(formDataObj.naziv) + news.naslovnaSlika.replace(news.formatiranNaziv, "").replace(".jpg", "") + ".jpg",
         };
-        const res = await axios.patch(`http://localhost:5000/api/news/updateImage`, updatedItem);
+        const res = await axios.patch(runningModePath + `/api/news/updateImage`, updatedItem);
       } catch (err) {}
     }
   };
@@ -89,7 +90,7 @@ function EditNews() {
   useEffect(() => {
     const getNews = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/news/` + name);
+        const res = await axios.get(runningModePath + `/api/news/` + name);
         setNews(res.data.data);
       } catch (err) {}
     };
@@ -100,7 +101,7 @@ function EditNews() {
 
   async function updateImage(updatedItem) {
     try {
-      const res = await axios.patch(`http://localhost:5000/api/news/updateImage`, updatedItem);
+      const res = await axios.patch(runningModePath + `/api/news/updateImage`, updatedItem);
       console.log(res);
     } catch (err) {}
   }
@@ -108,7 +109,7 @@ function EditNews() {
   const handleImageDeletion = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.get(`http://localhost:5000/api/news/selectedImage/` + news.id);
+      const res = await axios.get(runningModePath + `/api/news/selectedImage/` + news.id);
       if (chosenImage == res.data.data.naslovnaSlika) {
         for (let i = 0; i < images.length; i++) {
           if (images[i] != chosenImage) {
@@ -122,7 +123,7 @@ function EditNews() {
       }
     } catch (err) {}
     try {
-      const res = await axios.delete(`http://localhost:5000/delete/vijesti/` + formatPath(news.naziv) + "/" + chosenImage);
+      const res = await axios.delete(runningModePath + `/delete/vijesti/` + formatPath(news.naziv) + "/" + chosenImage);
     } catch (err) {}
     getSlike();
     setShow(false);
@@ -132,7 +133,7 @@ function EditNews() {
     var uploadForm = document.getElementById("uploadForm");
     var uploadFormData = new FormData(uploadForm);
     try {
-      const response = await axios.patch(`http://localhost:5000/upload/vijesti/` + news.naziv, uploadFormData);
+      const response = await axios.patch(runningModePath + `/upload/vijesti/` + news.naziv, uploadFormData);
     } catch (err) {
       console.log(err);
     }
@@ -214,7 +215,7 @@ function EditNews() {
           </Button>
         </Modal.Footer>
       </Modal>
-      {isViewerOpen && <ImageViewer src={images.map((image) => "http://localhost:5000/newuploads/vijesti/" + name + "/" + image)} currentIndex={currentImage} disableScroll={false} closeOnClickOutside={true} onClose={closeImageViewer} />}
+      {isViewerOpen && <ImageViewer src={images.map((image) => runningModePath + "/newuploads/vijesti/" + name + "/" + image)} currentIndex={currentImage} disableScroll={false} closeOnClickOutside={true} onClose={closeImageViewer} />}
       <AdminLogout />
       <AdminGoBack />
     </>

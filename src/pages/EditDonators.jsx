@@ -16,6 +16,7 @@ import "./../css/ReadWorkshops.css";
 import { formatPath } from "../js/namechange";
 
 function EditDonators() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   let { name } = useParams();
   const [donator, setDonator] = useState([]);
   const [validated, setValidated] = useState(false);
@@ -26,7 +27,7 @@ function EditDonators() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [chosenImage, setChosenImage] = useState({});
-  const path = "http://localhost:5000/newUploads/donatori/" + name + "/";
+  const path = runningModePath + "/newuploads/donatori/" + name + "/";
 
   const openImageViewer = useCallback((index) => {
     setCurrentImage(index);
@@ -40,7 +41,7 @@ function EditDonators() {
 
   const getSlike = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/donatori/` + name);
+      const response = await axios.get(runningModePath + `/donatori/` + name);
       setImages(response.data);
     } catch (err) {}
   };
@@ -67,14 +68,14 @@ function EditDonators() {
         pocetakPodrske: formDataObj.pocetakPodrske,
         krajPodrske: formDataObj.krajPodrske,
       };
-      const res = await axios.patch(`http://localhost:5000/api/donators/`, updatedDonator);
+      const res = await axios.patch(runningModePath + `/api/donators/`, updatedDonator);
     } catch (err) {}
   };
 
   useEffect(() => {
     const getDonator = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/donators/` + name);
+        const res = await axios.get(runningModePath + `/api/donators/` + name);
         const dummyWorkshop = res.data.data;
         setDonator(dummyWorkshop);
       } catch (err) {}
@@ -86,7 +87,7 @@ function EditDonators() {
 
   async function updateImage(updatedItem) {
     try {
-      const res = await axios.patch(`http://localhost:5000/api/donators/updateImage`, updatedItem);
+      const res = await axios.patch(runningModePath + `/api/donators/updateImage`, updatedItem);
       console.log(res);
     } catch (err) {}
   }
@@ -94,7 +95,7 @@ function EditDonators() {
   const handleImageDeletion = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.get(`http://localhost:5000/api/donators/selectedImage/` + donator.id);
+      const res = await axios.get(runningModePath + `/api/donators/selectedImage/` + donator.id);
       if (chosenImage == res.data.data.naslovnaSlika) {
         for (let i = 0; i < images.length; i++) {
           if (images[i] != chosenImage) {
@@ -108,7 +109,7 @@ function EditDonators() {
       }
     } catch (err) {}
     try {
-      const res = await axios.delete(`http://localhost:5000/delete/donatori/` + formatPath(donator.naziv) + "/" + chosenImage);
+      const res = await axios.delete(runningModePath + `/delete/donatori/` + formatPath(donator.naziv) + "/" + chosenImage);
     } catch (err) {}
     getSlike();
     setShow(false);
@@ -118,7 +119,7 @@ function EditDonators() {
     var uploadForm = document.getElementById("uploadForm");
     var uploadFormData = new FormData(uploadForm);
     try {
-      const response = await axios.patch(`http://localhost:5000/upload/donatori/` + donator.naziv, uploadFormData);
+      const response = await axios.patch(runningModePath + `/upload/donatori/` + donator.naziv, uploadFormData);
     } catch (err) {
       console.log(err);
     }
@@ -202,7 +203,7 @@ function EditDonators() {
           </Button>
         </Modal.Footer>
       </Modal>
-      {isViewerOpen && <ImageViewer src={images.map((image) => "http://localhost:5000/newuploads/donatori/" + name + "/" + image)} currentIndex={currentImage} disableScroll={false} closeOnClickOutside={true} onClose={closeImageViewer} />}
+      {isViewerOpen && <ImageViewer src={images.map((image) => runningModePath + "/newuploads/donatori/" + name + "/" + image)} currentIndex={currentImage} disableScroll={false} closeOnClickOutside={true} onClose={closeImageViewer} />}
       <AdminLogout />
       <AdminGoBack />
     </>

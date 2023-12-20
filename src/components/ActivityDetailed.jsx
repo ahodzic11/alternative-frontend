@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import "./../css/ActivityDetailed.css";
 
 function ActivityDetailed() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [activity, setActivity] = useState([]);
   const { name } = useParams();
   const navigate = useNavigate();
@@ -14,7 +15,7 @@ function ActivityDetailed() {
   useEffect(() => {
     const getActivity = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/activities/` + name);
+        const res = await axios.get(runningModePath + `/api/activities/` + name);
         setActivity(res.data.data);
       } catch (err) {}
     };
@@ -43,7 +44,7 @@ function ActivityDetailed() {
             </div>
           </div>
           <div className="secondWrapperActivity">
-            <img className="activityImageElement" src={"http://localhost:5000/newuploads/aktivnosti/" + name + "/" + activity.naslovnaSlika} alt="workshopImageElement" />
+            <img className="activityImageElement" src={runningModePath + "/newuploads/aktivnosti/" + name + "/" + activity.naslovnaSlika} alt="workshopImageElement" />
           </div>
         </div>
       </div>

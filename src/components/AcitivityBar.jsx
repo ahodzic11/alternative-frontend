@@ -4,6 +4,7 @@ import Offer from "./Offer";
 import "./../css/ActivityBar.css";
 
 function AcitivityBar() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [offerList, setOffers] = useState([]);
 
   const FadeInRegular = ({ children }) => {
@@ -96,7 +97,7 @@ function AcitivityBar() {
   useEffect(() => {
     const getOffers = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/offers`);
+        const res = await axios.get(runningModePath + `/api/offers`);
         setOffers(res.data.data);
       } catch (err) {}
     };

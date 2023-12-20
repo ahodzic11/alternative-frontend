@@ -13,6 +13,7 @@ import GoToTop from "../components/GoToTop";
 import "./../css/AllWorkshops.css";
 
 function AllWorkshops() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [workshopList, setWorkshops] = useState([]);
   const [filteredWorkshops, setFilteredWorkshops] = useState([]);
   const [naslovFilter, setNaslovFilter] = useState("");
@@ -31,7 +32,7 @@ function AllWorkshops() {
   useEffect(() => {
     const getWorkshops = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/workshops`);
+        const res = await axios.get(runningModePath + `/api/workshops`);
         setWorkshops(res.data.data);
         setFilteredWorkshops(res.data.data);
         setNPages(Math.ceil(res.data.data.length / recordsPerPage));

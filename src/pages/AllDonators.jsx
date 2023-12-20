@@ -12,6 +12,7 @@ import Pagination from "../components/Pagination";
 import "./../css/AllDonators.css";
 
 function AllDonators() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [donatorList, setDonators] = useState([]);
   const [filteredDonators, setFilteredDonators] = useState([]);
   const [nazivFilter, setNazivFilter] = useState("");
@@ -88,7 +89,7 @@ function AllDonators() {
   useEffect(() => {
     const getDonators = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/donators`);
+        const res = await axios.get(runningModePath + `/api/donators`);
         setDonators(res.data.data);
         setFilteredDonators(res.data.data);
         setNPages(Math.ceil(res.data.data.length / recordsPerPage));

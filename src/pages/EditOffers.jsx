@@ -16,6 +16,7 @@ import Modal from "react-bootstrap/Modal";
 import "./../css/ReadWorkshops.css";
 
 function EditOffers() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   let { name } = useParams();
   const [offer, setOffer] = useState([]);
   const [validated, setValidated] = useState(false);
@@ -28,7 +29,7 @@ function EditOffers() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [chosenImage, setChosenImage] = useState({});
-  const path = "http://localhost:5000/newUploads/ponude/" + name + "/";
+  const path = runningModePath + "/newUploads/ponude/" + name + "/";
 
   const openImageViewer = useCallback((index) => {
     setCurrentImage(index);
@@ -42,7 +43,7 @@ function EditOffers() {
 
   const getSlike = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/ponude/` + name);
+      const response = await axios.get(runningModePath + `/ponude/` + name);
       setImages(response.data);
     } catch (err) {}
   };
@@ -95,18 +96,18 @@ function EditOffers() {
         tipPonude: tipPonude,
         tipPrijave: tipPrijave,
       };
-      const res = await axios.patch(`http://localhost:5000/api/offers/`, updatedOffer);
+      const res = await axios.patch(runningModePath + `/api/offers/`, updatedOffer);
     } catch (err) {}
     if (formDataObj.naziv != offer.naziv) {
       try {
-        const res = await axios.patch(`http://localhost:5000/updatelocation/`, { type: "ponude", oldNaziv: offer.naziv, naziv: formDataObj.naziv });
+        const res = await axios.patch(runningModePath + `/updatelocation/`, { type: "ponude", oldNaziv: offer.naziv, naziv: formDataObj.naziv });
       } catch (err) {}
       try {
         const updatedItem = {
           id: offer.id,
           naslovnaSlika: formatPath(formDataObj.naziv) + offer.naslovnaSlika.replace(offer.formatiranNaziv, "").replace(".jpg", "") + ".jpg",
         };
-        const res = await axios.patch(`http://localhost:5000/api/offers/updateImage`, updatedItem);
+        const res = await axios.patch(runningModePath + `/api/offers/updateImage`, updatedItem);
       } catch (err) {}
     }
   };
@@ -114,7 +115,7 @@ function EditOffers() {
   useEffect(() => {
     const getOffer = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/offers/` + name);
+        const res = await axios.get(runningModePath + `/api/offers/` + name);
         const dummyWorkshop = res.data.data;
         setTipPonude(dummyWorkshop.tipPonude);
         setTipPrijave(dummyWorkshop.tipPrijave);
@@ -128,7 +129,7 @@ function EditOffers() {
 
   async function updateImage(updatedItem) {
     try {
-      const res = await axios.patch(`http://localhost:5000/api/offers/updateImage`, updatedItem);
+      const res = await axios.patch(runningModePath + `/api/offers/updateImage`, updatedItem);
       console.log(res);
     } catch (err) {}
   }
@@ -136,7 +137,7 @@ function EditOffers() {
   const handleImageDeletion = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.get(`http://localhost:5000/api/offers/selectedImage/` + offer.id);
+      const res = await axios.get(runningModePath + `/api/offers/selectedImage/` + offer.id);
       if (chosenImage == res.data.data.naslovnaSlika) {
         for (let i = 0; i < images.length; i++) {
           if (images[i] != chosenImage) {
@@ -150,7 +151,7 @@ function EditOffers() {
       }
     } catch (err) {}
     try {
-      const res = await axios.delete(`http://localhost:5000/delete/ponude/` + formatPath(offer.naziv) + "/" + chosenImage);
+      const res = await axios.delete(runningModePath + `/delete/ponude/` + formatPath(offer.naziv) + "/" + chosenImage);
     } catch (err) {}
     getSlike();
     setShow(false);
@@ -160,7 +161,7 @@ function EditOffers() {
     var uploadForm = document.getElementById("uploadForm");
     var uploadFormData = new FormData(uploadForm);
     try {
-      const response = await axios.patch(`http://localhost:5000/upload/ponude/` + offer.naziv, uploadFormData);
+      const response = await axios.patch(runningModePath + `/upload/ponude/` + offer.naziv, uploadFormData);
     } catch (err) {
       console.log(err);
     }
@@ -285,7 +286,7 @@ function EditOffers() {
           </Button>
         </Modal.Footer>
       </Modal>
-      {isViewerOpen && <ImageViewer src={images.map((image) => "http://localhost:5000/newuploads/ponude/" + name + "/" + image)} currentIndex={currentImage} disableScroll={false} closeOnClickOutside={true} onClose={closeImageViewer} />}
+      {isViewerOpen && <ImageViewer src={images.map((image) => runningModePath + "/newuploads/ponude/" + name + "/" + image)} currentIndex={currentImage} disableScroll={false} closeOnClickOutside={true} onClose={closeImageViewer} />}
       <AdminLogout />
       <AdminGoBack />
     </>

@@ -13,6 +13,7 @@ import Button from "react-bootstrap/Button";
 import "./../css/WorkshopList.css";
 
 function WorkshopList() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   let { area } = useParams();
   const [workshopList, setWorkshops] = useState([]);
   const [filteredWorkshops, setFilteredWorkshops] = useState([]);
@@ -32,7 +33,7 @@ function WorkshopList() {
   useEffect(() => {
     const getWorkshops = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/workshops/area/` + area);
+        const res = await axios.get(runningModePath + `/api/workshops/area/` + area);
         setWorkshops(res.data.data);
         setFilteredWorkshops(res.data.data);
         setNPages(Math.ceil(res.data.data.length / recordsPerPage));

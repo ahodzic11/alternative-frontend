@@ -14,6 +14,7 @@ import { formatPath } from "../js/namechange";
 import "./../css/ReadProjects.css";
 
 function ReadProjects() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [projects, setProjects] = useState([]);
   const [show, setShow] = useState(false);
   const [chosenProject, setChosenProject] = useState({});
@@ -23,7 +24,7 @@ function ReadProjects() {
 
   const getProjects = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/projects`);
+      const res = await axios.get(runningModePath + `/api/projects`);
       setProjects(res.data.data);
     } catch (err) {}
   };
@@ -44,10 +45,10 @@ function ReadProjects() {
   async function handleDelete() {
     setShow(false);
     try {
-      const res = await axios.delete(`http://localhost:5000/api/projects/` + chosenProject.id);
+      const res = await axios.delete(runningModePath + `/api/projects/` + chosenProject.id);
     } catch (err) {}
     try {
-      const res = await axios.delete(`http://localhost:5000/delete/projekti/` + chosenProject.naziv);
+      const res = await axios.delete(runningModePath + `/delete/projekti/` + chosenProject.naziv);
     } catch (err) {}
     getProjects();
   }

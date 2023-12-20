@@ -13,6 +13,7 @@ import { formatPath } from "../js/namechange";
 import "./../css/AddWorkshopPage.css";
 
 function AddDonatorPage() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [inputs, setInputs] = useState({});
   const [validated, setValidated] = useState(false);
   const [donatorRangePeriods, setDonatorRangePeriods] = useState(0);
@@ -51,7 +52,7 @@ function AddDonatorPage() {
     var uploadFormData = new FormData(uploadForm);
 
     try {
-      const response = await axios.post(`http://localhost:5000/upload/donatori/` + inputs.naziv, uploadFormData);
+      const response = await axios.post(runningModePath + `/upload/donatori/` + inputs.naziv, uploadFormData);
     } catch (err) {}
 
     addDonator({

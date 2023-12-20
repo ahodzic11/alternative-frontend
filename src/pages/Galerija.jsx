@@ -7,6 +7,7 @@ import ImageViewer from "react-simple-image-viewer";
 import "./../css/Galerija.css";
 
 function Galerija() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [images, setImages] = useState([]);
   const [currentImage, setCurrentImage] = useState(0);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
@@ -14,7 +15,7 @@ function Galerija() {
   useEffect(() => {
     const getSlike = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/galerija/`);
+        const response = await axios.get(runningModePath + `/galerija/`);
         setImages(response.data);
       } catch (err) {}
     };
@@ -44,13 +45,13 @@ function Galerija() {
           {images.map((image, index) => (
             <li class="hex">
               <div class="hexIn">
-                <img className="hexImageElement" src={"http://localhost:5000/newuploads/galerija/" + image} alt="" onClick={() => openImageViewer(index)} />
+                <img className="hexImageElement" src={runningModePath + "/newuploads/galerija/" + image} alt="" onClick={() => openImageViewer(index)} />
               </div>
             </li>
           ))}
         </ul>
       </div>
-      {isViewerOpen && <ImageViewer src={images.map((image) => "http://localhost:5000/newuploads/galerija/" + image)} currentIndex={currentImage} disableScroll={false} closeOnClickOutside={true} onClose={closeImageViewer} />}
+      {isViewerOpen && <ImageViewer src={images.map((image) => runningModePath + "/newuploads/galerija/" + image)} currentIndex={currentImage} disableScroll={false} closeOnClickOutside={true} onClose={closeImageViewer} />}
       {!isViewerOpen && <GoToTop />}
 
       <Footer />

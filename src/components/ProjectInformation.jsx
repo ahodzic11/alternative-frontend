@@ -7,10 +7,11 @@ import ImageViewer from "react-simple-image-viewer";
 import "./../css/WorkshopDetailed.css";
 
 function ProjectInformation() {
+  const runningModePath = process.env.REACT_APP_NODE_ENV == "development" ? process.env.REACT_APP_LOCAL_SERVER : process.env.REACT_APP_REMOTE_SERVER;
   const [project, setProject] = useState([]);
   const [images, setImages] = useState([]);
   const { name } = useParams();
-  const path = "http://localhost:5000/newuploads/projekti/" + name + "/";
+  const path = runningModePath + "/newuploads/projekti/" + name + "/";
   const [currentImage, setCurrentImage] = useState(0);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
 
@@ -27,14 +28,14 @@ function ProjectInformation() {
   useEffect(() => {
     const getProject = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/projects/` + name);
+        const res = await axios.get(runningModePath + `/api/projects/` + name);
         setProject(res.data.data);
       } catch (err) {}
     };
 
     const getSlike = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/projekti/` + name);
+        const response = await axios.get(runningModePath + `/projekti/` + name);
         setImages(response.data);
       } catch (err) {}
     };
@@ -49,7 +50,7 @@ function ProjectInformation() {
       <div className="workshopInformationContainer">
         <div className="workshopInformationTitle">{project.naziv}</div>
         <div className="workshopInformationImage">
-          <img src={"http://localhost:5000/newuploads/projekti/" + name + "/" + project.naslovnaSlika} alt="naslovnaSlika" />
+          <img src={runningModePath + "/newuploads/projekti/" + name + "/" + project.naslovnaSlika} alt="naslovnaSlika" />
         </div>
         <div className="workshopInformationAbout informationalText">
           <span>Sadržaj projekta: </span>
@@ -91,7 +92,7 @@ function ProjectInformation() {
             <img key={index} id={image} className="workshopInformationImageElement" src={path + image} alt="slikaSRadionice" onClick={() => openImageViewer(index)} />
           ))}
         </div>
-        {isViewerOpen && <ImageViewer src={images.map((image) => "http://localhost:5000/newuploads/projekti/" + name + "/" + image)} currentIndex={currentImage} disableScroll={false} closeOnClickOutside={true} onClose={closeImageViewer} />}
+        {isViewerOpen && <ImageViewer src={images.map((image) => runningModePath + "/newuploads/projekti/" + name + "/" + image)} currentIndex={currentImage} disableScroll={false} closeOnClickOutside={true} onClose={closeImageViewer} />}
       </div>
       <Footer />
     </>
